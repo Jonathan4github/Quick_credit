@@ -118,3 +118,14 @@ input[type=submit]{
 .footer p {
   opacity: 0.65;
 }
+
+@media screen and (max-width: 660px) {
+  input[type=text] {
+    width: 75%;
+  }
+
+  input[type=submit]{
+    margin-top:20px;
+    width:200px;
+  }
+}
