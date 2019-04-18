@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Quick Credit</title>
+  <link type="text/css" rel="stylesheet" href="public/css/dashboard.css" media="screen,projection" />
+  <link rel="Quick Credit icon" href="./public/img/icon.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+  <div class="nav">
+    <div class="top-side">
+      <i class="fa fa-bars menu-bar-icon" onclick="openNav()"></i>
+      <a id="logo">
+        <i class="fa fa-leaf"></i> Quick Credit
+      </a>
+    </div>
+  </div>
+  <div id="mySidenav" class="sidenav">
+    <span class="closebtn" onclick="closeNav()">&times;</span>
+    <div class="sidenav-image">
+      <img src="https://via.placeholder.com/150" />
+      <p>Jonathan</p>
+    </div>
+    <a href="dashboard.html">
+      <i class="fa fa-dashboard fa-margin"></i> Dashboard</a>
+    <a href="apply.html">
+      <i class="fa fa-edit fa-margin"></i> Apply</a>
+    <a href="loan_history.html">
+      <i class="fa fa-heart fa-margin"></i> Loan history</a>
+    <a href="account.html">
+      <i class="fa fa-user fa-margin"></i> Account detail</a>
+    <a href="#">
+      <i class="fa fa-sign-out fa-margin"></i> Logout</a>
+
+  </div>
+  <main id="main">
+    <div class="section">
+      <div class="row">
+        <div class="card">
+          <div class="card-title">
+            Total No. of Loan Transaction
+          </div>
+          <div class="card-content text-blue">
+            0
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">
+            Total No. of Outstanding Loan
+          </div>
+          <div class="card-content text-red">
+            1
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">
+            Verified
+          </div>
+          <div class="card-content text-red">
+            <i class="fa fa-get-pocket text-green"></i>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+  <footer class="footer">
+    <p>&copy; 2019 Andela Bootcamp Quick Credit</p>
+  </footer>
+
+  <!--JavaScript at end of body for optimized loading-->
+  <script type="text/javascript" src="./public/js/sidebar.js"></script>
+</body>
+
+</html>
