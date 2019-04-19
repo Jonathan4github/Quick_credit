@@ -91,7 +91,7 @@ form a{
   color:#ffaf30; 
   text-decoration: none;
 }
-input[type=text]{
+input[type=text], input[type=password]{
   padding:10px 18px;
   margin:8px 0;
   width:35%;
