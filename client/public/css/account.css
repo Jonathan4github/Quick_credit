@@ -51,6 +51,18 @@ main {
   background-color: #f6f9fc;
 }
 
+.text-red {
+  color: red;
+}
+
+.fa-margin {
+  margin-right: 10px;
+}
+
+.fa-circle {
+  font-size: 10px !important;
+}
+
 .btn {
   background-color:#ffaf30;
   border: none;

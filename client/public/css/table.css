@@ -196,6 +196,10 @@ input[type=submit] {
   color:rgb(53, 173, 53);
 }
 
+.text-orange {
+  color:orange;
+}
+
 .text-blue {
   color:#3260DA;
 }
