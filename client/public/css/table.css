@@ -192,6 +192,10 @@ input[type=submit] {
   margin-top: 40px;
 }
 
+.card-footer {
+  padding:27px;
+}
+
 .text-red {
   color: red;
 }

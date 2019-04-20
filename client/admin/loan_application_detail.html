@@ -18,12 +18,6 @@
       </a>
     </div>
     <div class="menu" style="width:25%;">
-      <select>
-        <option><i class="fa fa-filter fa-margin"> Filter</i></option>
-        <option>View all loan applications</option>
-        <option>View all current loans (not fully repaid</option>
-        <option>View all repaid loans.</option>
-      </select>
     </div>
   </div>
   <div id="mySidenav" class="sidenav">
@@ -49,55 +43,45 @@
       <div class="row">
         <div class="card">
           <div class="card-title">
-            <h2>
-              Loan Applications
-            </h2>
+            <h2>Client Info</h3>
           </div>
+          <table style="width:50%;">
+            <tr>
+              <th>First name</th>
+              <td>Jonathan</td>
+            </tr>
+            <tr>
+              <th>Last name</th>
+              <td>Williams</td>
+            </tr>
+            <tr>
+              <th>Email</th>
+              <td>jonathanwilliams505@gmail.com</td>
+            </tr>
+          </table>
           <div class="card-content">
+            <h2>Loan Info</h2>
             <table>
               <tr>
                 <th>Date</th>
-                <th>Email</th>
                 <th>Amount</th>
-                <th>Aprove</th>
                 <th>Status</th>
               </tr>
-              <tr onclick="location.href='loan_application_detail.html';">
+              <tr>
                 <td>1-16-2019</td>
-                <td>jonathanwilliams505@gmail.com</td>
                 <td>&#8358; 158,000</td>
                 <td>
                   <i class="fa fa-circle fa-margin text-orange"></i>In progress</td>
-                <td> - </td>
               </tr>
-              <tr onclick="location.href='loan_application_detail.html';">
-                <td>1-16-2019</td>
-                <td>panel@gmail.com</td>
-                <td>&#8358; 158,000</td>
-                <td>
-                  <i class="fa fa-circle fa-margin text-green"></i>Approved</td>
-                <td>
-                  <i class="fa fa-circle fa-margin text-green"></i>Paid</td>
-                </td>
-              </tr>
-              <tr onclick="location.href='loan_application_detail.html';">
-                <td>1-16-2019</td>
-                <td>faith@gmail.com</td>
-                <td>&#8358; 208,000</td>
-                <td>
-                  <i class="fa fa-circle fa-margin text-red"></i>Reject</td>
-                <td>-</td>
-              </tr>
-              <tr onclick="location.href='loan_application_detail.html';">
-                <td>1-19-2019</td>
-                <td>adams@gmail.com</td>
-                <td>&#8358; 5,000</td>
-                <td>
-                  <i class="fa fa-circle fa-margin text-green"></i>Approved</td>
-                <td>
-                  <i class="fa fa-circle fa-margin text-green"></i>Paid</td>
+              <tr>
+                <th>Purpose</th>
+                <td colspan="2">Business</td>
               </tr>
             </table>
+            <div class="card-footer">
+                <button class="btn" value="Approve">Aprrove</button>
+                <button class="btn text-red" value="Reject">Reject</button>
+            </div>
           </div>
         </div>
       </div>
