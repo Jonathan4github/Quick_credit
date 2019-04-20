@@ -17,6 +17,14 @@
         <i class="fa fa-leaf"></i> Quick Credit
       </a>
     </div>
+    <div class="menu" style="width:25%;">
+      <select>
+        <option><i class="fa fa-filter fa-margin"> Filter</i></option>
+        <option>View all loan applications</option>
+        <option>View all current loans (not fully repaid</option>
+        <option>View all repaid loans.</option>
+      </select>
+    </div>
   </div>
   <div id="mySidenav" class="sidenav">
     <span class="closebtn" onclick="closeNav()">&times;</span>
@@ -42,56 +50,60 @@
         <div class="card">
           <div class="card-title">
             <h2>
-              List of Clients
+              Loan Applications
             </h2>
           </div>
           <div class="card-content">
             <table>
               <tr>
-                <th>Registered Date</th>
-                <th>First Name</th>
-                <th>Last Name</th>
+                <th>Date</th>
                 <th>Email</th>
+                <th>Amount</th>
+                <th>Aprove</th>
                 <th>Status</th>
               </tr>
-              <tr onclick="location.href='client_detail.html';">
+              <tr onclick="location.href='loan_history_detail.html';">
                 <td>1-16-2019</td>
-                <td>Jonathan</td>
-                <td>Williams</td>
                 <td>jonathanwilliams505@gmail.com</td>
+                <td>&#8358; 158,000</td>
                 <td>
-                  <i class="fa fa-circle fa-margin text-green"></i>verified</td>
+                  <i class="fa fa-circle fa-margin text-orange"></i>In progress</td>
+                <td> - </td>
               </tr>
-              <tr onclick="location.href='client_detail.html';">
+              <tr onclick="location.href='loan_history_detail.html';">
                 <td>1-16-2019</td>
-                <td>Panel</td>
-                <td>Williams</td>
                 <td>panel@gmail.com</td>
+                <td>&#8358; 158,000</td>
                 <td>
-                  <i class="fa fa-circle fa-margin text-green"></i>verified</td>
+                  <i class="fa fa-circle fa-margin text-green"></i>Approved</td>
+                <td>
+                  <i class="fa fa-circle fa-margin text-green"></i>Paid</td>
+                </td>
               </tr>
-              <tr onclick="location.href='client_detail.html';">
+              <tr onclick="location.href='loan_history_detail.html';">
                 <td>1-16-2019</td>
-                <td>Victory</td>
-                <td>Adams</td>
-                <td>adams@gmail.com</td>
+                <td>faith@gmail.com</td>
+                <td>&#8358; 208,000</td>
                 <td>
-                  <i class="fa fa-circle fa-margin text-red"></i>not verified</td>
+                  <i class="fa fa-circle fa-margin text-red"></i>Reject</td>
+                <td>-</td>
               </tr>
-              <tr onclick="location.href='client_detail.html';">
-                  <td>1-16-2019</td>
-                  <td>Faith</td>
-                  <td>Adams</td>
-                  <td>faith@gmail.com</td>
-                  <td>
-                    <i class="fa fa-circle fa-margin text-green"></i>verified</td>
-                </tr>
+              <tr onclick="location.href='loan_history_detail.html';">
+                <td>1-19-2019</td>
+                <td>adams@gmail.com</td>
+                <td>&#8358; 5,000</td>
+                <td>
+                  <i class="fa fa-circle fa-margin text-green"></i>Approved</td>
+                <td>
+                  <i class="fa fa-circle fa-margin text-green"></i>Paid</td>
+              </tr>
             </table>
-
           </div>
         </div>
       </div>
     </div>
+
+
 
   </main>
   <footer class="footer">

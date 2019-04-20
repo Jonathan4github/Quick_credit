@@ -18,6 +18,10 @@ body {
   display: flex;
 }
 
+.menu{
+  display: flex;
+}
+
 .menu-bar-icon {
   color:#fff;
   padding: 20px 0px 0 45px;
