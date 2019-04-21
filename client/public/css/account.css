@@ -6,6 +6,7 @@
 
 body {
   background-color: #f6f9fc;
+  min-height: 100%;
 }
 .nav {
   background-color:#3260DA;
@@ -47,8 +48,19 @@ body {
 
 main {
   width:100%;
-  height: 100vh;
   background-color: #f6f9fc;
+}
+
+.text-red {
+  color: red;
+}
+
+.fa-margin {
+  margin-right: 10px;
+}
+
+.fa-circle {
+  font-size: 10px !important;
 }
 
 .btn {
@@ -83,9 +95,9 @@ form a {
   text-decoration: none;
 }
 
-input[type=text], select {
+input[type=text], input[type=password], select {
   padding:10px 18px;
-  margin:8px 0;
+  margin: 8px 0;
   width:70%;
   border: solid 1px #3260DA;
 }
@@ -167,10 +179,10 @@ input[type=submit] {
   justify-content: center;
 }
 
-.apply-card {
+.account-card {
   width:50%;
   background-color:#fff;
-  height:600px;
+  height:700px;
   padding:20px;
   text-align: center;
   color:#000;
@@ -188,52 +200,49 @@ input[type=submit] {
   margin-top: 40px;
 }
 
-.text-red {
-  color: red;
+.nav_image {
+  text-align: center;
+  color: #fff;
+}
+.nav_image > img {
+  border-radius: 50%;
+  padding:2px;
+  border: solid 2px #4285f4;
 }
 
-.text-green {
-  color:rgb(53, 173, 53);
+input[type='file'] {
+  display: none;
 }
 
-.text-blue {
-  color:#3260DA;
-}
-
-.summary-row {
-  display: flex;
-}
-
-.summary-content {
-  border-bottom: solid 1px #3260DA; color:#3260DA; padding:18px; width:145px;
-}
-
-table {
-  border-collapse: collapse;
-  width:100%;
-}
-
-th {
-  color: #bbb;
-}
-
-td {
-  color:#3260DA;
-}
-  
-th, td {
-  padding: 8px;
-  text-align: left;
-  border-bottom: solid 1px #3260DA;
-}
-
-tr:hover {
-  background-color: #f5f5f5;
+.upload-btn {
+  border: 1px solid #4285f4;
+  color: #4285f4;
+  background-color: transparent;
+  padding: 5px 15px;
+  border-radius: 8px;
+  font-size: 15px;
   cursor: pointer;
 }
+.hide-btn {
+  margin: 20px 0 20px 0;
+}
 
-.fa-circle {
-  font-size: 10px !important;
+.icon {
+  padding: 10px;
+  background: dodgerblue;
+  color: white;
+  min-width: 50px;
+  text-align: center;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  outline: none;
+}
+
+.input-field:focus {
+  border: 2px solid dodgerblue;
 }
 
 .footer {
@@ -241,7 +250,7 @@ tr:hover {
   text-align: center;
   padding: 20px 0;
   background-color: #101445;
-  width: 100%;
+  width: 100%; 
 }
 
 .footer p {
@@ -249,26 +258,33 @@ tr:hover {
 }
 
 @media screen and (max-width: 660px) {
-
-  .apply-card {
+  .account-card {
     width:100%;
     height:100vh;
+  }
+
+  .card-title {
+    width:80%;
   }
   
  .row {
   margin:0px;
  }
+}
 
- .summary-content{
-   width:95%;
- }
-
-  input[type=text], select {
-    width: 65%;
+@media screen and (min-width: 660px) {
+  .account-card {
+    width:60%;
+    height:100vh;
   }
 
-  input[type=submit]{
-    margin-top:20px;
-    width:80%;
+  .card-title {
+    width:70%;
   }
+}
+
+@media screen and (device-width: 360px) and (-webkit-device-pixel-ratio: 3) {
+  
+
+
 }
