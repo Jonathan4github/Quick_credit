@@ -36,7 +36,6 @@
       <i class="fa fa-user fa-margin"></i> Account detail</a>
     <a href="#">
       <i class="fa fa-sign-out fa-margin"></i> Logout</a>
-
   </div>
   <main id="main">
     <div class="section">
@@ -44,54 +43,73 @@
         <div class="card">
           <div class="card-title">
             <h2>
-              Loan Applications
+              Repayment History
             </h2>
           </div>
           <div class="card-content">
             <table>
               <tr>
+                <td class="repayment_history_query">
+                  <input type="radio" name="repayment_history" value="All"> All
+                  <input type="radio" name="repayment_history" value="paid" class="query-item"> Paid
+                  <input type="radio" name="repayment_history" value="Outstanding" class="query-item"> Outstanding
+                </td>
+              </tr>
+            </table>
+            <table>
+              <tr>
                 <th>Date</th>
+                <th>Client_id</th>
                 <th>Fullname</th>
+                <th>Purpose</th>
                 <th>Amount</th>
-                <th>Aprove</th>
+                <th>Status</th>
               </tr>
-              <tr onclick="location.href='loan_application_detail.html';">
+              <tr onclick="location.href='repayment_history_detail.html';">
                 <td>1-16-2019</td>
+                <td>00821</td>
                 <td>Jonathan Williams</td>
+                <td>School fee</td>
                 <td>&#8358; 158,000</td>
                 <td>
-                  <i class="fa fa-circle fa-margin text-orange"></i>In progress</td>
+                  <i class="fa fa-circle fa-margin text-red"></i>Outstanding</td>
               </tr>
-              <tr onclick="location.href='loan_application_detail.html';">
+              <tr onclick="location.href='repayment_history_detail.html';">
                 <td>1-16-2019</td>
-                <td>Adams Paul</td>
+                <td>99172</td>
+                <td>Adams Yusuf</td>
+                <td>Business</td>
                 <td>&#8358; 158,000</td>
                 <td>
-                  <i class="fa fa-circle fa-margin text-green"></i>Approved</td>
+                  <i class="fa fa-circle fa-margin text-green"></i>Paid</td>
               </tr>
-              <tr onclick="location.href='loan_application_detail.html';">
+              <tr onclick="location.href='repayment_history_detail.html';">
                 <td>1-16-2019</td>
-                <td>Faith John</td>
+                <td>00918</td>
+                <td>Faith Alex</td>
+                <td>Private</td>
                 <td>&#8358; 208,000</td>
                 <td>
-                  <i class="fa fa-circle fa-margin text-red"></i>Reject</td>
+                  <i class="fa fa-circle fa-margin text-red"></i>Outstanding
+                </td>
               </tr>
-              <tr onclick="location.href='loan_application_detail.html';">
+              <tr onclick="location.href='repayment_history_detail.html';">
                 <td>1-19-2019</td>
-                <td>Abdu Alibaba</td>
+                <td>09099</td>
+                <td>Grace James</td>
+                <td>Private</td>
                 <td>&#8358; 5,000</td>
                 <td>
-                  <i class="fa fa-circle fa-margin text-green"></i>Approved</td>
+                  <i class="fa fa-circle fa-margin text-green"></i>Paid
+                </td>
               </tr>
             </table>
           </div>
         </div>
       </div>
     </div>
-
-
-
   </main>
+
   <footer class="footer">
     <p>&copy; 2019 Andela Bootcamp Quick Credit</p>
   </footer>

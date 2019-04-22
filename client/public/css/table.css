@@ -240,6 +240,15 @@ tr:hover {
   font-size: 10px !important;
 }
 
+.repayment_history_query {
+  text-align: right; 
+  padding: 20px;
+}
+
+.query-item {
+  margin-left:20px;
+}
+
 .footer {
   color: #fff;
   text-align: center;
