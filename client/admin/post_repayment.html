@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Quick Credit</title>
+  <link type="text/css" rel="stylesheet" href="../public/css/apply.css" media="screen,projection" />
+  <link rel="Quick Credit icon" href="../public/img/icon.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+  <div class="nav">
+    <div class="top-side">
+      <i class="fa fa-bars menu-bar-icon" onclick="openNav()"></i>
+      <a id="logo">
+        <i class="fa fa-leaf"></i> Quick Credit
+      </a>
+    </div>
+  </div>
+  <div id="mySidenav" class="sidenav">
+    <span class="closebtn" onclick="closeNav()">&times;</span>
+    <div class="sidenav-image">
+      <img src="https://via.placeholder.com/150" />
+      <p>Jonathan</p>
+    </div>
+    <a href="dashboard.html">
+        <i class="fa fa-dashboard fa-margin"></i> Dashboard</a>
+      <a href="clients.html">
+        <i class="fa fa-users fa-margin"></i> Clients</a>
+      <a href="loan_applications.html">
+        <i class="fa fa-pencil fa-margin"></i> Loan applications</a>
+      <a href="post_repayment.html">
+        <i class="fa fa-edit fa-margin"></i> Post repayment</a>
+      <a href="repayment_history.html">
+        <i class="fa fa-history fa-margin"></i> Repayment history</a>
+      <a href="../index.html">
+        <i class="fa fa-sign-out fa-margin"></i> Logout</a>
+
+  </div>
+  <main id="main">
+    <div class="section">
+      <div class="row">
+        <div class="apply-card">
+          <div class="card-title">
+            <h2>
+              Repayment
+            </h2>
+          </div>
+
+          <div class="card-content">
+            <form>
+              <input type="text" name="clientId" placeholder="Enter Client Id *" required/>
+              <input type="text" name="loanId" placeholder="Enter Loan Id *" required/>
+              <input type="date" name="repaymentDate" required/>
+              <input type="text" name="amount" placeholder="Enter Amount *" required/>
+              <input type="submit" value="Pay" class="btn">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+  <footer class="footer">
+    <p>&copy; 2019 Andela Bootcamp Quick Credit</p>
+  </footer>
+
+  <!--JavaScript at end of body for optimized loading-->
+  <script type="text/javascript" src="../public/js/sidebar.js"></script>
+</body>
+
+</html>
