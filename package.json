@@ -1,0 +1,44 @@
+{
+  "name": "quick_credit",
+  "version": "1.0.0",
+  "description": "An online lending platform that provides short term soft loans to individuals.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --require @babel/register",
+    "dev-start": "nodemon --exec babel-node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jonathan4github/Quick_credit.git"
+  },
+  "keywords": [
+    "quick",
+    "credit",
+    "loan"
+  ],
+  "author": "Jonathan Williams",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jonathan4github/Quick_credit/issues"
+  },
+  "homepage": "https://github.com/Jonathan4github/Quick_credit#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.4.3",
+    "@babel/core": "^7.4.3",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.4.3",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.17.2",
+    "nodemon": "^1.18.11",
+    "nyc": "^14.0.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.1",
+    "express": "^4.16.4",
+    "mocha": "^6.1.4"
+  }
+}
