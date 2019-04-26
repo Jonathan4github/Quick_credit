@@ -1,0 +1,8 @@
+client
+server/test
+server/config
+controllers
+helpers
+middlewares
+routes
+test

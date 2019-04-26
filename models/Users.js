@@ -1,0 +1,40 @@
+const Users = [
+  {
+    id: 1,
+    email: 'jonathanwilliams505@gmail.com',
+    firstName: 'jonathan',
+    lastName: 'Williams',
+    password: 'password',
+    address: 'No. 2 address road Lagos, Nigeria',
+    status: ' verified',
+    isAdmin: true,
+    createdAt: '2/24/2019',
+    updatedAt: '2/24/2019',
+  },
+  {
+    id: 2,
+    email: 'panel@gmail.com',
+    firstName: 'Panel',
+    lastName: 'Williams',
+    password: 'password',
+    address: 'No. 5 address road Lagos, Nigeria',
+    status: 'unverified',
+    isAdmin: false,
+    createdAt: '2/24/2019',
+    updatedAt: '2/24/2019',
+  },
+  {
+    id: 3,
+    email: 'alibaba@gmail.com',
+    firstName: 'Alibaba',
+    lastName: 'Yusuf',
+    password: 'password',
+    address: 'No. 2 address road Lagos, Nigeria',
+    status: ' verified',
+    isAdmin: true,
+    createdAt: '2/24/2019',
+    updatedAt: '2/24/2019',
+  },
+];
+
+export default Users;
