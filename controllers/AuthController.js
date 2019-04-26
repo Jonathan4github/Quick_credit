@@ -36,7 +36,30 @@ class userController {
       });
   }
 
-  
+  signin(req, res) {
+    const { email, password } = req.body;
+    let user = userData.find(x => x.email === email);
+    if (user) {
+      const isPassword = Helper.comparePassword(user.password, password);
+      if (isPassword) {
+        const token = Helper.generateToken(user.id);
+        req.token = token;
+        return res.status(200).json({
+          status: 200,
+          data: [{
+            token: token,
+            message: 'login successfully'
+          }]
+        });
+      }
+    }
+    return res.status(401).json({
+      status: 401,
+      error: 'The credentials you provided is incorrect'
+    });
+  }
+
+
 }
 
 export default new userController;

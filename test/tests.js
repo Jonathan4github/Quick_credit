@@ -171,6 +171,53 @@ describe('All test case for QuickCredit', () => {
         done();
       });
   });
+  it('should return 400 Signin: invalid email address', done => {
+    chai.request(app).post('/api/v1/auth/signin/')
+      .send({
+        email: 'gmail.com',
+        password: 'password'
+      })
+      .end((err, res) => {
+        res.should.have.status(400);
+        res.body.email.should.equal('Please enter a valid email');
+        done();
+      });
+  });
+  it('should return 400 Signin: invalid password length', done => {
+    chai.request(app).post('/api/v1/auth/signin/')
+      .send({
+        email: 'jo@gmail.com',
+        password: ''
+      })
+      .end((err, res) => {
+        res.should.have.status(400);
+        res.body.password.should.equal('Please enter a valid password');
+        done();
+      });
+  });
+  it('should return 401 Signin: invalid credential', done => {
+    chai.request(app).post('/api/v1/auth/signin/')
+      .send({
+        email: 'jo@gmail.com',
+        password: '91passord'
+      })
+      .end((err, res) => {
+        res.should.have.status(401);
+        res.body.error.should.equal('The credentials you provided is incorrect');
+        done();
+      });
+  });
+  it('should return 200 Signin: valid credential', done => {
+    chai.request(app).post('/api/v1/auth/signin/')
+      .send({
+        email: 'jo@gmail.com',
+        password: 'password'
+      })
+      .end((err, res) => {
+        res.should.have.status(200);
+        done();
+      });
+  });
 
 
 
