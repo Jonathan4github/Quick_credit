@@ -1,6 +1,11 @@
 import express from 'express';
+import bodyParser from 'body-parser';
+import authRoutes from './routes/auth/auth';
 
 const app = express();
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/', (req, res) => {
   res.status(200).json({
@@ -9,6 +14,7 @@ app.get('/', (req, res) => {
   });
 });
 
+app.use('/api/v1/', authRoutes);
 app.use('*', (req, res) => {
   res.status(404).json({
     status: 404,
