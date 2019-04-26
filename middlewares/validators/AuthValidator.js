@@ -47,6 +47,21 @@ class UserValidation {
     return next();
   }
 
+  Signin(req, res, next) {
+    const { email, password } = req.body,
+      errorMessage = {};
+    if (!Helper.isValidEmail(email)) {
+      errorMessage.email = 'Please enter a valid email';
+    }
+    if (!validator.isLength(password, { min: 7, max: 10 })) {
+      errorMessage.password = 'Please enter a valid password';
+    }
+    if (!(Object.keys(errorMessage).length === 0)) {
+      return res.status(400).json(errorMessage);
+    }
+    return next();
+  }
+
 }
 
 export default new UserValidation();
