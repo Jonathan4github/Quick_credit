@@ -1,5 +1,9 @@
 language: node_js
 node_js:
-  - "8.2.1"
-after_success:
-  echo "Successful"
+  - '10.15.3'
+sudo: required
+dist: trusty
+script: npm run test
+cache:
+  directories:
+    - 'node_modules'
