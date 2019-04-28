@@ -32,7 +32,9 @@ describe('All test case for QuickCredit', () => {
         firstName: 'Jonathan',
         lastName: 'williams',
         email: 'jo@gmail.com',
-        password: 'password'
+        password: 'password',
+        address: '',
+        wordAddress: ''
       })
       .end((err, res) => {
         res.should.have.status(201);
@@ -218,6 +220,40 @@ describe('All test case for QuickCredit', () => {
         done();
       });
   });
+  it('should return 400 mark user as verified: invalid email', done => {
+    chai.request(app).patch('/api/v1/users/panlaz@gmail.com/verify')
+      .end((err, res) => {
+        res.should.have.status(400);
+        res.body.error.should.equal('User with the given email panlaz@gmail.com does not exist');
+        done();
+      });
+  });
+  it('should return 400 mark user as verified: user home address required', done => {
+    chai.request(app).patch('/api/v1/users/panel@gmail.com/verify')
+      .end((err, res) => {
+        res.should.have.status(400);
+        res.body.address.should.equal('User home address is required');
+        done();
+      });
+  });
+  it('should return 400 mark user as verified: user work address required', done => {
+    chai.request(app).patch('/api/v1/users/alibaba@gmail.com/verify')
+      .end((err, res) => {
+        res.should.have.status(400);
+        res.body.workAddress.should.equal('User work address is required');
+        done();
+      });
+  });
+  it('should return 400 mark user as verified: home & user work address required', done => {
+    chai.request(app).patch('/api/v1/users/alice@gmail.com/verify')
+      .end((err, res) => {
+        res.should.have.status(400);
+        res.body.workAddress.should.equal('User work address is required');
+        res.body.address.should.equal('User home address is required');
+        done();
+      });
+  });
+
 
 
 

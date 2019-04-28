@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-class userController {
+class AuthController {
   /**
    * Method for creating User
    * @static
@@ -58,8 +58,6 @@ class userController {
       error: 'The credentials you provided is incorrect'
     });
   }
-
-
 }
 
-export default new userController;
+export default new AuthController;
