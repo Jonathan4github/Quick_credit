@@ -114,7 +114,7 @@ describe('All test case for QuickCredit', () => {
         done();
       });
   });
-  it('should return 400 Signup: invalid first name length', done => {
+  it('should return 400 Signup: invalid last name length', done => {
     chai.request(app).post('/api/v1/auth/signup/')
       .send({
         firstName: 'Jonathan',
@@ -250,6 +250,27 @@ describe('All test case for QuickCredit', () => {
         res.should.have.status(400);
         res.body.workAddress.should.equal('User work address is required');
         res.body.address.should.equal('User home address is required');
+        done();
+      });
+  });
+  it('should return status 200 and loan data: valid loan id', done => {
+    chai
+      .request(app)
+      .get('/api/v1/loans/1')
+      .set('Content-Type', 'application/json')
+      .end((err, res) => {
+        res.should.have.status(200);
+        done();
+      });
+  });
+  it('should return status 404 and loan data: invalid loan id', done => {
+    chai
+      .request(app)
+      .get('/api/v1/loans/12')
+      .set('Content-Type', 'application/json')
+      .end((err, res) => {
+        res.should.have.status(404);
+        res.body.error.should.equal('Loan with given id was not found');
         done();
       });
   });
