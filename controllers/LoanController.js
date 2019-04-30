@@ -1,5 +1,4 @@
 import loanData from '../models/Loans';
-import { finished } from 'stream';
 
 class LoanController {
   /**
@@ -23,6 +22,37 @@ class LoanController {
       status: 200,
       data: loan
     })
+  }
+
+  sortRepaidLoan(req, res) {
+    let queryParimeters = req.query;
+    /**
+     * check if query parimeter is empty
+     * return all loan
+     */
+    if (Object.keys(queryParimeters).length === 0) {
+      return res.status(200).json({
+        status: 200,
+        data: loanData
+      });
+    }
+
+    //get query parimeters value
+    let loanStatus = queryParimeters['status'];
+    let loanRepaid = queryParimeters['repaid'];
+    if (loanRepaid == 'false') { loanRepaid = false }
+    if (loanRepaid == 'true') { loanRepaid = true }    
+    let sortedData = [];
+    // sort loan
+    let sortLoan = loanData.filter((loan) => {
+      if (loan.status == loanStatus && loan.repaid == loanRepaid) {
+        sortedData.push(loan);
+      }
+    })
+    return res.status(200).json({
+      status: 200,
+      data: sortedData
+    });
   }
 }
 
