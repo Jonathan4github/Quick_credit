@@ -3,8 +3,10 @@ import AuthController from '../controllers/AuthController';
 import AuthValidator from '../middlewares/validators/AuthValidator';
 import UserController from '../controllers/UserController';
 import UserValidator from '../middlewares/validators/UserValidator';
-import loanController from '../controllers/LoanController';
-import loanValidator from '../middlewares/validators/LoanValidator';
+import LoanController from '../controllers/LoanController';
+import LoanValidator from '../middlewares/validators/LoanValidator';
+import RepaymentController from '../controllers/RepaymentController';
+import RepaymentValidator from '../middlewares/validators/RepaymentsValidator';
 
 
 const router = express.Router();
@@ -16,8 +18,10 @@ router.route('/auth/signin')
 router.route('/users/:email/verify')
   .patch(UserValidator.verifyUser, UserController.markVerified);
 router.route('/loans/:id/')
-  .get(loanController.fineOne);
+  .get(LoanController.fineOne);
 router.route('/loans')
-  .get(loanValidator.validateQueryParams, loanController.sortRepaidLoan)
+  .get(LoanValidator.validateQueryParams, LoanController.sortRepaidLoan)
+router.route('/loans/:id/repayments')
+  .get(RepaymentValidator.validateLoanId, RepaymentController.getRepayments);
 
 export default router;

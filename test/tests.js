@@ -326,6 +326,38 @@ describe('All test case for QuickCredit', () => {
         done();
       });
   });
+  it('should return repayments history with valid loan id', done => {
+    chai
+      .request(app)
+      .get('/api/v1/loans/2/repayments')
+      .set('Content-Type', 'application/json')
+      .end((err, res) => {
+        res.should.have.status(200);
+        done();
+      });
+  });
+  it(`should return 'Loan with the given id has no repayments history' for empty repayments`, done => {
+    chai
+      .request(app)
+      .get('/api/v1/loans/2/repayments')
+      .set('Content-Type', 'application/json')
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.body.data.should.equal('Loan with the given id has no repayments history');
+        done();
+      });
+  });
+  it(`should return 400 for 'Invalid loan id'`, done => {
+    chai
+      .request(app)
+      .get('/api/v1/loans/21/repayments')
+      .set('Content-Type', 'application/json')
+      .end((err, res) => {
+        res.should.have.status(400);
+        res.body.error.should.equal('Invalid loan id');
+        done();
+      });
+  });
 
 
 
