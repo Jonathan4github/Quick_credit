@@ -4,8 +4,10 @@
   "description": "An online lending platform that provides short term soft loans to individuals.",
   "main": "index.js",
   "scripts": {
-    "test": "nyc mocha --timeout=3000 --require @babel/register test/tests.js",
-    "dev-start": "nodemon --exec babel-node app.js"
+    "test": "nyc --reporter=text mocha --timeout=3000 --require @babel/register --exit test/tests.js",
+    "dev-start": "nodemon --exec babel-node app.js",
+    "nyc": "nyc --reporter=lcov npm run test && nyc report --reporter=text-lcov | coveralls",
+    "coverage": "nyc npm test"
   },
   "repository": {
     "type": "git",

@@ -51,6 +51,32 @@ const Users = [
     createdAt: '2/24/2019',
     updatedAt: '2/24/2019',
   },
+  {
+    id: 5,
+    email: 'timi@gmail.com',
+    firstName: 'Timi',
+    lastName: 'Adams',
+    password: 'password',
+    address: 'No 20 admans street Lagos Nigeria',
+    workAddress: 'No 20 admans street Lagos Nigeria',
+    status: ' verified',
+    isAdmin: true,
+    createdAt: '2/24/2019',
+    updatedAt: '2/24/2019',
+  },
+  {
+    id: 6,
+    email: 'nathan@gmail.com',
+    firstName: 'Williams',
+    lastName: 'Adams',
+    password: '$2b$08$jqvlFW01BXQI1i.3qzzJIe.NvXCBYSDT/qO6JUJO807k.v0ez67eq',
+    address: 'No 20 admans street Lagos Nigeria',
+    workAddress: 'No 20 admans street Lagos Nigeria',
+    status: ' verified',
+    isAdmin: true,
+    createdAt: '2/24/2019',
+    updatedAt: '2/24/2019',
+  }
 ];
 
 export default Users;

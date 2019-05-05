@@ -1,3 +1,4 @@
+
 class LoanValidator {
   /**
    * Method for validating query parimeter
@@ -31,6 +32,29 @@ class LoanValidator {
     }
     if (!(loanStatus == 'approved' || loanStatus == 'pending' || loanStatus == 'rejected')) {
       errorMessage.status = 'status value is required & should be pending, approved, rejected'
+    }
+    if (!(Object.keys(errorMessage).length === 0)) {
+      return res.status(400).json(errorMessage);
+    }
+    return next();
+  }
+
+  /**
+   * Method for validating loan application
+   * @static
+   * @param {request} req
+   * @param {response} res
+   * @return {obj} return json object.
+   */
+  validateLoanApplication(req, res, next){
+    const {amount, tenor} = req.body;
+    let errorMessage = {};
+    
+    if(isNaN(amount) || (amount < 1000) || (amount > 10000000)) {
+      errorMessage.amount = 'amount should be number & not less than 1000 or above 10000000';
+    }
+    if(isNaN(tenor) || tenor < 1 || tenor > 12){
+      errorMessage.tenor = 'tenor should be number & not less than 1 or above 12';
     }
     if (!(Object.keys(errorMessage).length === 0)) {
       return res.status(400).json(errorMessage);
