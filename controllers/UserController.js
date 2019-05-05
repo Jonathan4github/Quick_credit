@@ -19,8 +19,8 @@ class UserController {
     let user = userData.find(users => users.email === email);
     //mark user as verified
     user.status = 'verified';
-    return res.status(201).json({
-      status: 201,
+    return res.status(200).json({
+      status: 200,
       data: user
     });
   }

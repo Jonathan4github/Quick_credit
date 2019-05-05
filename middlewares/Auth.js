@@ -29,7 +29,7 @@ const Auth = {
           error: 'The token provide is invalid'
         })
       }
-      req.user = { id: decoded.userId };
+      req.user = user;
       next();
     });
   }

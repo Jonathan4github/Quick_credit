@@ -41,7 +41,7 @@ class LoanController {
     let loanStatus = queryParimeters['status'];
     let loanRepaid = queryParimeters['repaid'];
     if (loanRepaid == 'false') { loanRepaid = false }
-    if (loanRepaid == 'true') { loanRepaid = true }    
+    if (loanRepaid == 'true') { loanRepaid = true }
     let sortedData = [];
     // sort loan
     let sortLoan = loanData.filter((loan) => {
@@ -52,6 +52,41 @@ class LoanController {
     return res.status(200).json({
       status: 200,
       data: sortedData
+    });
+  }
+
+  loanApplication(req, res) {
+    const { tenor, amount } = req.body;
+    const interest = (parseFloat(amount) * 5) / 100;
+    const balance = parseFloat(amount) + interest;
+    const payInstallment = (parseFloat(amount) + interest) / tenor;
+
+    let newLoanApplication = {
+      id: loanData.length + 1,
+      tenor: tenor,
+      amount: amount,
+      payInstallment: payInstallment,
+      status: 'pending',
+      balance: balance,
+      interest: interest
+    }
+
+    loanData.push(newLoanApplication);
+
+    return res.status(200).json({
+      status:200,
+      data: {
+        loanId: loanData[loanData.length -1].id,
+        firstName: req.user.firstName,
+        lastName: req.user.lastName,
+        email: req.user.email,
+        tenor: tenor + ' months',
+        amount: amount,
+        payInstallment: payInstallment,
+        status: 'pending',
+        balance: balance,
+        interest: interest
+      }
     });
   }
 }

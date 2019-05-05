@@ -7,6 +7,7 @@ import LoanController from '../controllers/LoanController';
 import LoanValidator from '../middlewares/validators/LoanValidator';
 import RepaymentController from '../controllers/RepaymentController';
 import RepaymentValidator from '../middlewares/validators/RepaymentsValidator';
+import Auth from '../middlewares/Auth';
 
 
 const router = express.Router();
@@ -23,5 +24,7 @@ router.route('/loans')
   .get(LoanValidator.validateQueryParams, LoanController.sortRepaidLoan)
 router.route('/loans/:id/repayments')
   .get(RepaymentValidator.validateLoanId, RepaymentController.getRepayments);
+router.route('/loans')
+  .post(Auth.verifyToken, LoanValidator.validateLoanApplication, LoanController.loanApplication)
 
 export default router;

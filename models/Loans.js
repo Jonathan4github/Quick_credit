@@ -88,8 +88,8 @@ const Loans = [
     amount: 21000.00,
     paymentInstallment: 6000.00,
     balance: 120000,
-    interest: 6000,
-  },
+    interest: 6000
+  }
 ];
 
 export default Loans;
