@@ -1,3 +1,4 @@
+import loanData from '../../models/Loans';
 
 class LoanValidator {
   /**
@@ -58,6 +59,26 @@ class LoanValidator {
     }
     if (!(Object.keys(errorMessage).length === 0)) {
       return res.status(400).json(errorMessage);
+    }
+    return next();
+  }
+
+  loanStatus(req, res, next) {
+    let loanId = req.params.id;
+    let isnum = /^\d+$/.test(loanId);
+    let loandIdExist = loanData.find(loan => loan.id === parseInt(loanId));
+    if (!loandIdExist || isnum == false) {
+      return res.status(404).json({
+        status: 404,
+        error: 'Invalid loan id'
+      });
+    }
+    let { status } = req.body;
+    if (!((status == 'approve') || (status == 'reject'))){
+      return res.status(400).json({
+        status: 400,
+        error: 'status required & should be approve or reject'
+      });
     }
     return next();
   }

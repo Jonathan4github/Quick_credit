@@ -10,11 +10,12 @@ class RepaymentsValidator {
   */
   validateLoanId(req, res, next) {
     let loanId = parseInt(req.params.id, 10);
+    let isnum = /^\d+$/.test(loanId);
     let loandIdExist = loanData.find(loan => loan.id === loanId);
 
-    if (!loandIdExist) {
-      return res.status(400).json({
-        status: 400,
+    if (!loandIdExist || isnum == false) {
+      return res.status(404).json({
+        status: 404,
         error: 'Invalid loan id'
       })
     }

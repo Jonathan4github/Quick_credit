@@ -283,14 +283,14 @@ describe('All test case for QuickCredit', () => {
             done();
           });
       });
-      it('should return status 404 invalid loan id', done => {
+      it('should return status 404 id not found', done => {
         chai
           .request(app)
           .get('/api/v1/loans/12')
           .set('Content-Type', 'application/json')
           .end((err, res) => {
             res.should.have.status(404);
-            res.body.error.should.equal('Loan with given id was not found');
+            res.body.error.should.equal('Invalid loan id');
             done();
           });
       });
@@ -378,13 +378,13 @@ describe('All test case for QuickCredit', () => {
             done();
           });
       });
-      it(`should return 400 for 'Invalid loan id'`, done => {
+      it(`should return 404 id not found`, done => {
         chai
           .request(app)
           .get('/api/v1/loans/21/repayments')
           .set('Content-Type', 'application/json')
           .end((err, res) => {
-            res.should.have.status(400);
+            res.should.have.status(404);
             res.body.error.should.equal('Invalid loan id');
             done();
           });
@@ -439,6 +439,88 @@ describe('All test case for QuickCredit', () => {
                 done();
               });
           });
+        });
+      });
+      describe('Test case to approve or reject a loan', () => {
+        it('Signin non admin', done => {
+          chai.request(app).post(signinRoute)
+            .send({
+              email: 'preshy@gmail.com',
+              password: 'password'
+            })
+            .end((err, res) => {
+              token = res.body.data[0].token;
+              res.should.have.status(200);
+              done();
+            });
+        });
+
+        it(`should return 403 for non admin`, done => {
+          chai
+            .request(app)
+            .patch('/api/v1/loans/1')
+            .set('x-access-token', token)
+            .send({
+              status: 'approve'
+            })
+            .end((err, res) => {
+              res.should.have.status(403);
+              res.body.error.should.equal('Access Denied')
+              done();
+            });
+        });
+        it('Signin admin', done => {
+          chai.request(app).post(signinRoute)
+            .send({
+              email: 'nathan@gmail.com',
+              password: 'password'
+            })
+            .end((err, res) => {
+              token = res.body.data[0].token;
+              res.should.have.status(200);
+              done();
+            });
+        });
+        it(`should return 200 for admin & valid inputs`, done => {
+          chai
+            .request(app)
+            .patch('/api/v1/loans/1')
+            .set('x-access-token', token)
+            .send({
+              status: 'approve'
+            })
+            .end((err, res) => {
+              res.should.have.status(200);
+              done();
+            });
+        });
+        it(`should return 404 invalid loan id`, done => {
+          chai
+            .request(app)
+            .patch('/api/v1/loans/17')
+            .set('x-access-token', token)
+            .send({
+              status: 'approve'
+            })
+            .end((err, res) => {
+              res.should.have.status(404);
+              res.body.error.should.equal('Invalid loan id');
+              done();
+            });
+        });
+        it(`should return 400 invalid status value`, done => {
+          chai
+            .request(app)
+            .patch('/api/v1/loans/1')
+            .set('x-access-token', token)
+            .send({
+              status: 'appr'
+            })
+            .end((err, res) => {
+              res.should.have.status(400);
+              res.body.error.should.equal('status required & should be approve or reject');
+              done();
+            });
         });
       });
     });
