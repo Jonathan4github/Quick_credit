@@ -1,6 +1,6 @@
+import dotenv from 'dotenv';
 import userData from '../models/Users';
 import Helper from '../helpers/AuthHelper';
-import dotenv from 'dotenv';
 
 dotenv.config();
 
@@ -12,8 +12,10 @@ class AuthController {
    * @param {response} res
    * @return {obj} return json object user.
    */
-  signup(req, res) {
-    const { firstName, lastName, email, password } = req.body;
+  static signup(req, res) {
+    const {
+      firstName, lastName, email, password
+    } = req.body;
     const hashPassword = Helper.hashPassword(password);
     const newUser = {
       id: userData.length + 1,
@@ -21,7 +23,7 @@ class AuthController {
       lastName,
       email,
       password: hashPassword
-    }
+    };
 
     userData.push(newUser);
     const token = Helper.generateToken(newUser.id);
@@ -30,15 +32,15 @@ class AuthController {
       .json({
         status: 201,
         data: [{
-          token: token,
+          token,
           user: newUser
         }]
       });
   }
 
-  signin(req, res) {
+  static signin(req, res) {
     const { email, password } = req.body;
-    let user = userData.find(x => x.email === email);
+    const user = userData.find(x => x.email === email);
     if (user) {
       const isPassword = Helper.comparePassword(user.password, password);
       if (isPassword) {
@@ -47,7 +49,7 @@ class AuthController {
         return res.status(200).json({
           status: 200,
           data: [{
-            token: token,
+            token,
             message: 'login successfully'
           }]
         });
@@ -60,4 +62,4 @@ class AuthController {
   }
 }
 
-export default new AuthController;
+export default AuthController;

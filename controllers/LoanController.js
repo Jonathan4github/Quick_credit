@@ -10,16 +10,16 @@ class LoanController {
    * @return {obj} return json object loan.
    */
 
-  fineOne(req, res) {
-    const loan = loanData.find(loan => loan.id === parseInt(req.params.id, 10));
+  static fineOne(req, res) {
+    const loan = loanData.find(loans => loans.id === parseInt(req.params.id, 10));
     return res.status(200).json({
       status: 200,
       data: loan
-    })
+    });
   }
 
-  sortRepaidLoan(req, res) {
-    let queryParimeters = req.query;
+  static sortRepaidLoan(req, res) {
+    const queryParimeters = req.query;
     /**
      * check if query parimeter is empty
      * return all loan
@@ -31,61 +31,65 @@ class LoanController {
       });
     }
 
-    //get query parimeters value
-    let loanStatus = queryParimeters['status'];
-    let loanRepaid = queryParimeters['repaid'];
-    if (loanRepaid == 'false') { loanRepaid = false }
-    if (loanRepaid == 'true') { loanRepaid = true }
-    let sortedData = [];
+    // get query parimeters value
+    const loanStatus = queryParimeters.status;
+    let loanRepaid = queryParimeters.repaid;
+    if (loanRepaid === 'false') { loanRepaid = false; }
+    if (loanRepaid === 'true') { loanRepaid = true; }
+    const sortedData = [];
     // sort loan
-    let sortLoan = loanData.filter((loan) => {
-      if (loan.status == loanStatus && loan.repaid == loanRepaid) {
+    const sortLoan = loanData.filter((loan) => {
+      if (loan.status === loanStatus && loan.repaid === loanRepaid) {
         sortedData.push(loan);
       }
-    })
+    });
     return res.status(200).json({
       status: 200,
       data: sortedData
     });
   }
 
-  loanApplication(req, res) {
+  static loanApplication(req, res) {
     const { tenor, amount } = req.body;
     const interest = (parseFloat(amount) * 5) / 100;
     const balance = parseFloat(amount) + interest;
     const payInstallment = (parseFloat(amount) + interest) / tenor;
 
-    let newLoanApplication = {
+    const newLoanApplication = {
       id: loanData.length + 1,
-      tenor: tenor,
-      amount: amount,
-      payInstallment: payInstallment,
+      tenor,
+      amount,
+      payInstallment,
       status: 'pending',
-      balance: balance,
-      interest: interest
-    }
+      totalDue: balance,
+      balance,
+      interest,
+      repaid: false
+    };
 
     loanData.push(newLoanApplication);
 
-    return res.status(200).json({
-      status:200,
+    return res.status(201).json({
+      status: 201,
       data: {
-        loanId: loanData[loanData.length -1].id,
+        loanId: loanData[loanData.length - 1].id,
         firstName: req.user.firstName,
         lastName: req.user.lastName,
         email: req.user.email,
-        tenor: tenor + ' months',
-        amount: amount,
-        payInstallment: payInstallment,
+        tenor: `${tenor} months`,
+        amount,
+        payInstallment,
         status: 'pending',
-        balance: balance,
-        interest: interest
+        totalDue: balance,
+        balance,
+        interest
       }
     });
   }
-  applicationStatus(req, res) {
-    let { status } = req.body;
-    const loan = loanData.find(loan => loan.id === parseInt(req.params.id, 10));
+
+  static applicationStatus(req, res) {
+    const { status } = req.body;
+    const loan = loanData.find(loans => loans.id === parseInt(req.params.id, 10));
     loan.status = status;
     return res.status(200).json({
       status: 200,
@@ -94,4 +98,4 @@ class LoanController {
   }
 }
 
-export default new LoanController;
+export default LoanController;
