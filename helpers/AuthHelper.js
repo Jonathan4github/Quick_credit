@@ -13,8 +13,8 @@ const Helper = {
 
   /**
    * comparePassword
-   * @param {string} hashPassword 
-   * @param {string} password 
+   * @param {string} hashPassword
+   * @param {string} password
    * @returns {Boolean} return True or False
    */
 
@@ -40,11 +40,10 @@ const Helper = {
     const token = jwt.sign({
       userId: id
     },
-      process.env.SECRET, { expiresIn: '7d' }
-    );
+    process.env.SECRET, { expiresIn: '7d' });
     return token;
   }
 
-}
+};
 
-export default Helper; 
+export default Helper;

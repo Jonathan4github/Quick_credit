@@ -8,19 +8,31 @@ class RepaymentsValidator {
   * @param {response} res
   * @return {obj} return json object.
   */
-  validateLoanId(req, res, next) {
-    let loanId = parseInt(req.params.id, 10);
-    let isnum = /^\d+$/.test(loanId);
-    let loandIdExist = loanData.find(loan => loan.id === loanId);
+  static validateLoanId(req, res, next) {
+    const loanId = parseInt(req.params.id, 10);
+    const isnum = /^\d+$/.test(loanId);
+    const loanIdExist = loanData.find(loan => loan.id === loanId);
 
-    if (!loandIdExist || isnum == false) {
+    if (!loanIdExist || isnum === false) {
       return res.status(404).json({
         status: 404,
         error: 'Invalid loan id'
-      })
+      });
+    }
+    return next();
+  }
+
+  static validateRepayment(req, res, next) {
+    const loanId = parseInt(req.params.id, 10);
+    const loan = loanData.find(loans => loans.id === loanId);
+    if (loan.balance === 0) {
+      return res.status(200).json({
+        status: 200,
+        error: 'Loan has been fully paid'
+      });
     }
     return next();
   }
 }
 
-export default new RepaymentsValidator;
+export default RepaymentsValidator;

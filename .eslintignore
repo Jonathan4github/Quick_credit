@@ -1,8 +1,5 @@
-client
-server/test
-server/config
-controllers
-helpers
-middlewares
-routes
+controllers/LoanController.js
+controllers/RepaymentController.js
 test
+controllers
+middlewares

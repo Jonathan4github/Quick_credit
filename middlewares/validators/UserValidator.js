@@ -1,6 +1,6 @@
-import userData from '../../models/Users';
 import dotenv from 'dotenv';
 import validator from 'validator';
+import userData from '../../models/Users';
 
 class UserValidator {
   /**
@@ -11,17 +11,17 @@ class UserValidator {
    * @return {obj} return json object user.
    */
 
-  verifyUser(req, res, next) {
-    const email = req.params.email;
-    let errorMessage = {};
+  static verifyUser(req, res, next) {
+    const { email } = req.params;
+    const errorMessage = {};
     /**
-     * Search through dummy database to check if user 
+     * Search through dummy database to check if user
      * with the given email address exists
      */
-    let user = userData.find(users => users.email === email);
+    const user = userData.find(users => users.email === email);
     if (!user) {
-      return res.status(400).json({
-        status: 400,
+      return res.status(422).json({
+        status: 422,
         error: `User with the given email ${email} does not exist`
       });
     }
@@ -34,9 +34,9 @@ class UserValidator {
     }
 
     if (!(Object.keys(errorMessage).length === 0)) {
-      return res.status(400).json(errorMessage);
+      return res.status(422).json(errorMessage);
     }
     return next();
   }
 }
-export default new UserValidator;
+export default UserValidator;
