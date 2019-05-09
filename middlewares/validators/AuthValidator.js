@@ -1,22 +1,24 @@
-import Helper from '../../helpers/AuthHelper';
 import validator from 'validator';
+import Helper from '../../helpers/AuthHelper';
 import db from '../../models/Users';
 
 class UserValidation {
-  Signup(req, res, next) {
-    const { firstName, lastName, email, password } = req.body,
+  static Signup(req, res, next) {
+    const {
+        firstName, lastName, email, password
+      } = req.body,
       errorMessage = {};
 
     if (firstName === undefined || lastName === undefined || password === undefined) {
-      return res.status(400).json({
-        status: 400,
+      return res.status(422).json({
+        status: 422,
         error: 'All or some of the field is/are undefined'
       });
     }
-    //Search through dummy database to check if email exits
-    let emailExit = db.find(x => x.email === email);
+    /* Search through dummy database to check if email exits */
+    const emailExit = db.find(x => x.email === email);
 
-    if (emailExit != undefined) {
+    if (emailExit !== undefined) {
       return res.status(409).json({
         status: 409,
         error: 'The email you entered already exist'
@@ -29,7 +31,7 @@ class UserValidation {
       errorMessage.lastName = 'Lastname must not be less than 2 or above 17 characters';
     }
     if (firstName.search(/^[a-zA-Z]*$/) === -1) {
-      errorMessage.firstName = 'Fullname should be all alphalbet';
+      errorMessage.firstName = 'First should be all alphalbet';
     }
     if (lastName.search(/^[a-zA-Z]*$/) === -1) {
       errorMessage.lastName = 'Lastname should be all alphalbet';
@@ -42,12 +44,12 @@ class UserValidation {
       errorMessage.password = 'password must not be less than 7 or above 10 characters';
     }
     if (!(Object.keys(errorMessage).length === 0)) {
-      return res.status(400).json(errorMessage);
+      return res.status(422).json(errorMessage);
     }
     return next();
   }
 
-  Signin(req, res, next) {
+  static Signin(req, res, next) {
     const { email, password } = req.body,
       errorMessage = {};
     if (!Helper.isValidEmail(email)) {
@@ -57,11 +59,10 @@ class UserValidation {
       errorMessage.password = 'Please enter a valid password';
     }
     if (!(Object.keys(errorMessage).length === 0)) {
-      return res.status(400).json(errorMessage);
+      return res.status(422).json(errorMessage);
     }
     return next();
   }
-
 }
 
-export default new UserValidation();
+export default UserValidation;

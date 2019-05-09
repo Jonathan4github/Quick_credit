@@ -10,7 +10,6 @@ import RepaymentValidator from '../middlewares/validators/RepaymentsValidator';
 import Auth from '../middlewares/Auth';
 import isAdmin from '../middlewares/isAdmin';
 
-
 const router = express.Router();
 
 router.route('/auth/signup/')
@@ -21,12 +20,14 @@ router.route('/users/:email/verify')
   .patch(UserValidator.verifyUser, UserController.markVerified);
 router.route('/loans/:id/')
   .get(RepaymentValidator.validateLoanId, LoanController.fineOne)
-  .patch(Auth.verifyToken, isAdmin, LoanValidator.loanStatus, LoanController.applicationStatus);  
+  .patch(Auth.verifyToken, isAdmin, LoanValidator.loanStatus, LoanController.applicationStatus);
 router.route('/loans')
-  .get(LoanValidator.validateQueryParams, LoanController.sortRepaidLoan)
+  .get(LoanValidator.validateQueryParams, LoanController.sortRepaidLoan);
 router.route('/loans/:id/repayments')
-  .get(RepaymentValidator.validateLoanId, RepaymentController.getRepayments);
+  .get(RepaymentValidator.validateLoanId, RepaymentController.getRepayments)
+  .post(RepaymentValidator.validateLoanId,
+    RepaymentValidator.validateRepayment, RepaymentController.createRepayment);
 router.route('/loans')
-  .post(Auth.verifyToken, LoanValidator.validateLoanApplication, LoanController.loanApplication)
+  .post(Auth.verifyToken, LoanValidator.validateLoanApplication, LoanController.loanApplication);
 
 export default router;

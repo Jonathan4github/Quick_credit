@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "nyc --reporter=text mocha --timeout=3000 --require @babel/register --exit test/tests.js",
-    "dev-start": "nodemon --exec babel-node app.js",
+    "dev-start": "set DEBUG=rest && nodemon --exec babel-node app.js",
     "nyc": "nyc --reporter=lcov npm run test && nyc report --reporter=text-lcov | coveralls",
     "coverage": "nyc npm test"
   },
@@ -34,6 +34,7 @@
     "chai": "^4.2.0",
     "coveralls": "^3.0.3",
     "cross-env": "^5.2.0",
+    "debug": "^4.1.1",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-airbnb-base": "^13.1.0",
