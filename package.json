@@ -4,9 +4,10 @@
   "description": "An online lending platform that provides short term soft loans to individuals.",
   "main": "index.js",
   "scripts": {
-    "test": "nyc --reporter=text mocha --timeout=3000 --require @babel/register --exit test/tests.js",
-    "dev-start": "set DEBUG=rest && nodemon --exec babel-node app.js",
-    "start": "set DEBUG=rest && babel-node app.js",
+    "test": "nyc --reporter=text mocha --timeout=3000 --require @babel/register --exit ./server/test/tests.js",
+    "dev-start": "set DEBUG=rest && nodemon --exec babel-node ./server/app.js",
+    "build" : "babel server --out-dir build",
+    "start": "set DEBUG=rest && node build/app.js",
     "nyc": "nyc --reporter=lcov npm run test && nyc report --reporter=text-lcov | coveralls",
     "coverage": "nyc npm test"
   },
@@ -38,7 +39,9 @@
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.17.2",
-    "nodemon": "^1.18.11",
+    "nodemon": "^1.18.11"
+  },
+  "dependencies": {
     "bcrypt": "^3.0.6",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
@@ -46,6 +49,7 @@
     "chai-http": "^4.2.1",
     "cross-env": "^5.2.0",
     "dotenv": "^7.0.0",
+    "debug": "^4.1.1",
     "express": "^4.16.4",
     "jsonwebtoken": "^8.5.1",
     "mocha": "^6.1.4",
