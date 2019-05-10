@@ -25,7 +25,7 @@
     "url": "https://github.com/Jonathan4github/Quick_credit/issues"
   },
   "homepage": "https://github.com/Jonathan4github/Quick_credit#readme",
-  "devDependencies": {
+  "Dependencies": {
     "@babel/cli": "^7.4.3",
     "@babel/core": "^7.4.3",
     "@babel/node": "^7.2.2",
