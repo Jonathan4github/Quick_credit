@@ -630,7 +630,6 @@ describe('All test case for QuickCredit', () => {
               done();
             });
         });
-
       })
     });
   });

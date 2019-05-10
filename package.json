@@ -6,6 +6,7 @@
   "scripts": {
     "test": "nyc --reporter=text mocha --timeout=3000 --require @babel/register --exit test/tests.js",
     "dev-start": "set DEBUG=rest && nodemon --exec babel-node app.js",
+    "start": "babel-node app.js",
     "nyc": "nyc --reporter=lcov npm run test && nyc report --reporter=text-lcov | coveralls",
     "coverage": "nyc npm test"
   },
