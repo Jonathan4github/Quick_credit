@@ -1,4 +1,4 @@
-engines:
+plugins:
   duplication:
     enabled: false
     config:
@@ -17,9 +17,10 @@ ratings:
   paths:
     - 'server/*.js'
     - 'server/**/*.js'
-exclude_paths:
+exclude_patterns:
   - node_modules/
   - .nyc_output
   - coverage
   - server/test/
   - client/
+  
