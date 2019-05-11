@@ -41,7 +41,7 @@ The application UI template is hosted on gh-pages with [Quick credit](https://jo
 API endpoints hosted on heroku at https://quickcredit-v1.herokuapp.com/
 
 ## Pivotal Tracker ID
-Click on the link below to view this project user story.
+Click on the link below to view this project user story
 
 [Quick credit pivotal tracker story](https://www.pivotaltracker.com/n/projects/2326582)
 
