@@ -1,25 +1,18 @@
-engines:
+plugins:
   duplication:
     enabled: false
-    config:
-      languages:
-        - javascript
-  eslint:
-    enabled: true
-    checks:
-      Similar code:
-        enabled: false
-      import/extensions:
-        enabled: false
-  fixme:
-    enabled: true
-ratings:
-  paths:
-    - 'server/*.js'
-    - 'server/**/*.js'
-exclude_paths:
+checks:
+  return-statements:
+    enabled: false
+  similar-code:
+    enabled: false
+  identical-code:
+    enabled: false
+  file-lines:
+    enabled: false
+exclude_patterns:
   - node_modules/
-  - .nyc_output
-  - coverage
   - server/test/
-  - client/
+  - server/public/
+  - client
+  - .nyc_output
