@@ -1,26 +1,34 @@
 module.exports = {
     "env": {
+        "node": true,
         "browser": true,
         "es6": true,
         "mocha": true
     },
     "extends": "airbnb-base",
-    "parserOptions": {
-        "ecmaVersion": 2018,
-        "sourceType": "module"
-    },
     "rules": {
-        "linebreak-style": 0,
-        "comma-dangle": 0,
         "one-var": 0,
         "one-var-declaration-per-line": 0,
         "new-cap": 0,
         "consistent-return": 0,
         "no-param-reassign": 0,
+        "arrow-body-style": 0,
         "comma-dangle": 0,
         "curly": ["error", "multi-line"],
         "import/no-unresolved": [2, { "commonjs": true }],
-        "no-unused-vars": 0,
         "no-shadow": ["error", { "allow": ["req", "res", "err"] }],
+        "valid-jsdoc": ["error", {
+            "requireReturn": true,
+            "requireReturnType": true,
+            "requireParamDescription": false,
+            "requireReturnDescription": true
+        }],
+        "require-jsdoc": ["error", {
+            "require": {
+                "FunctionDeclaration": true,
+                "MethodDefinition": true,
+                "ClassDeclaration": true
+            }
+        }]
     }
 };
