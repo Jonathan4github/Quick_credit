@@ -20,7 +20,6 @@ module.exports = {
         "comma-dangle": 0,
         "curly": ["error", "multi-line"],
         "import/no-unresolved": [2, { "commonjs": true }],
-        "no-unused-vars": 0,
         "no-shadow": ["error", { "allow": ["req", "res", "err"] }]
     }
 };
