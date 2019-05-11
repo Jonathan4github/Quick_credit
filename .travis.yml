@@ -2,8 +2,8 @@ env:
   global:
     - CC_TEST_REPORTER_ID=2d8148c3a07d0a93a2d5268616d7a8bba4d5a76b32743757ca740e35a81cb1d6
 language: node_js
-rvm:
-  - 8.2.1
+node_js:
+  - "8.2.1"
 before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
