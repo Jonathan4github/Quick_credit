@@ -8,8 +8,7 @@
     "dev-start": "set DEBUG=rest && nodemon --exec babel-node ./server/app.js",
     "build" : "babel server --out-dir build",
     "start": "set DEBUG=rest && node build/app.js",
-    "nyc": "nyc --reporter=lcov npm run test && nyc report --reporter=text-lcov | coveralls",
-    "coverage": "nyc npm test"
+    "nyc": "nyc --reporter=lcov npm run test && nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",
