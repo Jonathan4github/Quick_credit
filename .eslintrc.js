@@ -21,10 +21,6 @@ module.exports = {
         "curly": ["error", "multi-line"],
         "import/no-unresolved": [2, { "commonjs": true }],
         "no-unused-vars": 0,
-        "no-shadow": ["error", { "allow": ["req", "res", "err"] }],
-        "globals": {
-            "window": true,
-            "document": true
-        },
+        "no-shadow": ["error", { "allow": ["req", "res", "err"] }]
     }
 };
