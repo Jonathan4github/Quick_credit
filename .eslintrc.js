@@ -5,10 +5,6 @@ module.exports = {
         "mocha": true
     },
     "extends": "airbnb-base",
-    "globals": {
-        "Atomics": "readonly",
-        "SharedArrayBuffer": "readonly"
-    },
     "parserOptions": {
         "ecmaVersion": 2018,
         "sourceType": "module"
@@ -26,9 +22,5 @@ module.exports = {
         "import/no-unresolved": [2, { "commonjs": true }],
         "no-unused-vars": 0,
         "no-shadow": ["error", { "allow": ["req", "res", "err"] }],
-        "globals": {
-            "window": true,
-            "document": true
-        },
     }
 };
