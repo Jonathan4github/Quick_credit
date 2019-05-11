@@ -5,6 +5,10 @@ module.exports = {
         "mocha": true
     },
     "extends": "airbnb-base",
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+    },
     "parserOptions": {
         "ecmaVersion": 2018,
         "sourceType": "module"
@@ -20,6 +24,11 @@ module.exports = {
         "comma-dangle": 0,
         "curly": ["error", "multi-line"],
         "import/no-unresolved": [2, { "commonjs": true }],
-        "no-shadow": ["error", { "allow": ["req", "res", "err"] }]
+        "no-unused-vars": 0,
+        "no-shadow": ["error", { "allow": ["req", "res", "err"] }],
+        "globals": {
+            "window": true,
+            "document": true
+        },
     }
 };
