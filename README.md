@@ -8,11 +8,10 @@ helps solve problems of financial inclusion as a way to alleviate poverty and em
 income earners.
 
 [![Build Status](https://travis-ci.org/Jonathan4github/Quick_credit.svg?branch=develop)](https://travis-ci.org/Jonathan4github/Quick_credit)
-[![Coverage Status](https://coveralls.io/repos/github/Jonathan4github/Quick_credit/badge.svg)](https://coveralls.io/github/Jonathan4github/Quick_credit)
-
-
+[![Coverage Status](https://coveralls.io/repos/github/Jonathan4github/Quick_credit/badge.svg?branch=ch-setuo-continues-integration-165954421)](https://coveralls.io/github/Jonathan4github/Quick_credit?branch=develop)
 [![Maintainability](https://api.codeclimate.com/v1/badges/0877bb31e6b9859cf679/maintainability)](https://codeclimate.com/github/Jonathan4github/Quick_credit/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/0877bb31e6b9859cf679/test_coverage)](https://codeclimate.com/github/Jonathan4github/Quick_credit/test_coverage)
+
 
 ## Table of Contents
 - [Required Features](#required-features)
