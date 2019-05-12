@@ -5,10 +5,13 @@ language: node_js
 node_js:
   - "8.2.1"
 before_script:
+npm install:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
 script:
   - npm run test
+after_success:
+  -npm run nyc
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
