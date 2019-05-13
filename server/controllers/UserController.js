@@ -15,12 +15,11 @@ class UserController {
 
   static markVerified(req, res) {
     const { email } = req.params;
-    /* Search through dummy database to check user with given email */
-    const user = userData.find(users => users.email === email);
-    /* mark user as verified */
+    const user = userData.find(user => user.email === email);
     user.status = 'verified';
     return res.status(200).json({
       status: 200,
+      message: 'User has been successfully marked as verified',
       data: user
     });
   }

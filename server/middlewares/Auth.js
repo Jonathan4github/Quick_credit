@@ -22,7 +22,7 @@ const Auth = {
       }
 
 
-      let user = userData.find(x => x.id === decoded.userId);
+      let user = userData.find(user => user.id === decoded.userId);
       if (user == undefined) {
         return res.status(401).json({
           status: 401,

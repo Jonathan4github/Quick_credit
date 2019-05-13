@@ -14,18 +14,14 @@ class UserValidator {
   static verifyUser(req, res, next) {
     const { email } = req.params;
     const errorMessage = {};
-    /**
-     * Search through dummy database to check if user
-     * with the given email address exists
-     */
-    const user = userData.find(users => users.email === email);
+    const user = userData.find(user => user.email === email);
     if (!user) {
       return res.status(422).json({
         status: 422,
         error: `User with the given email ${email} does not exist`
       });
     }
-    // check if user home and work address is empty
+    
     if (!validator.isLength(user.address, { min: 5 })) {
       errorMessage.address = 'User home address is required';
     }
