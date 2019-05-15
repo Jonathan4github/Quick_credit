@@ -15,8 +15,8 @@ class UserValidation {
         error: 'All or some of the field is/are undefined'
       });
     }
-    /* Search through dummy database to check if email exits */
-    const emailExit = db.find(x => x.email === email);
+
+    const emailExit = db.find(user => user.email === email);
 
     if (emailExit !== undefined) {
       return res.status(409).json({
@@ -50,8 +50,14 @@ class UserValidation {
   }
 
   static Signin(req, res, next) {
-    const { email, password } = req.body,
-      errorMessage = {};
+    const { email, password } = req.body;
+    let errorMessage = {};
+    if (email === undefined || password === undefined) {
+      return res.status(422).json({
+        status: 422,
+        error: 'All or some of the field is/are undefined'
+      });
+    }
     if (!Helper.isValidEmail(email)) {
       errorMessage.email = 'Please enter a valid email';
     }

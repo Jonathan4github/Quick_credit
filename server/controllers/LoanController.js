@@ -14,16 +14,14 @@ class LoanController {
     const loan = loanData.find(loans => loans.id === parseInt(req.params.id, 10));
     return res.status(200).json({
       status: 200,
+      message: 'Retrieve successfull',
       data: loan
     });
   }
 
   static sortRepaidLoan(req, res) {
     const queryParimeters = req.query;
-    /**
-     * check if query parimeter is empty
-     * return all loan
-     */
+
     if (Object.keys(queryParimeters).length === 0) {
       return res.status(200).json({
         status: 200,
@@ -31,13 +29,12 @@ class LoanController {
       });
     }
 
-    // get query parimeters value
     const loanStatus = queryParimeters.status;
     let loanRepaid = queryParimeters.repaid;
     if (loanRepaid === 'false') { loanRepaid = false; }
     if (loanRepaid === 'true') { loanRepaid = true; }
     const sortedData = [];
-    // sort loan
+    
     const sortLoan = loanData.filter((loan) => {
       if (loan.status === loanStatus && loan.repaid === loanRepaid) {
         sortedData.push(loan);
@@ -45,6 +42,7 @@ class LoanController {
     });
     return res.status(200).json({
       status: 200,
+      message: 'Retrieve successful',
       data: sortedData
     });
   }
@@ -71,6 +69,7 @@ class LoanController {
 
     return res.status(201).json({
       status: 201,
+      message: 'Loan application was successful',
       data: {
         loanId: loanData[loanData.length - 1].id,
         firstName: req.user.firstName,
@@ -93,6 +92,7 @@ class LoanController {
     loan.status = status;
     return res.status(200).json({
       status: 200,
+      message: 'Loan status was updated successful',      
       data: loan
     });
   }

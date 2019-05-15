@@ -10,23 +10,17 @@ class LoanValidator {
    */
 
   static validateQueryParams(req, res, next) {
-    /* check if query parimeter is empty  return all loan */
+    
     const queryParimeters = req.query;
     if (Object.keys(queryParimeters).length === 0) {
       return next();
     }
-    /**
-     * get values from query parimenter
-     */
+    
     const loanStatus = queryParimeters.status;
     let loanRepaid = queryParimeters.repaid;
     if (loanRepaid === 'false') { loanRepaid = false; }
     if (loanRepaid === 'true') { loanRepaid = true; }
-    /**
-     * validate query parimeter if it has
-     * object property of status and repaid else
-     * throw an error message.
-     */
+    
     const errorMessage = {};
     if (!(loanRepaid === true || loanRepaid === false)) {
       errorMessage.repaid = 'repaid value is required & should be true or false';

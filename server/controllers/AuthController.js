@@ -40,7 +40,7 @@ class AuthController {
 
   static signin(req, res) {
     const { email, password } = req.body;
-    const user = userData.find(x => x.email === email);
+    const user = userData.find(user => user.email === email);
     if (user) {
       const isPassword = Helper.comparePassword(user.password, password);
       if (isPassword) {

@@ -9,7 +9,8 @@ const Loans = [
     tenor: 6,
     amount: 21000.00,
     paymentInstallment: 6000.00,
-    balance: 120000,
+    paidAmount: 21000,
+    balance: 0,
     interest: 6000,
   },
   {
@@ -22,7 +23,8 @@ const Loans = [
     tenor: 6,
     amount: 21000.00,
     paymentInstallment: 6000.00,
-    balance: 120000,
+    paidAmount: 21000,
+    balance: 0,
     interest: 6000,
   },
   {
@@ -35,7 +37,8 @@ const Loans = [
     tenor: 6,
     amount: 21000.00,
     paymentInstallment: 6000.00,
-    balance: 120000,
+    paidAmount: 21000,
+    balance: 0,
     interest: 6000,
   },
   {
@@ -48,7 +51,8 @@ const Loans = [
     tenor: 6,
     amount: 21000.00,
     paymentInstallment: 6000.00,
-    balance: 120000,
+    paidAmount: 21000,
+    balance: 0,
     interest: 6000,
   },
   {
@@ -61,7 +65,8 @@ const Loans = [
     tenor: 6,
     amount: 21000.00,
     paymentInstallment: 6000.00,
-    balance: 120000,
+    paidAmount: 21000,
+    balance: 0,
     interest: 6000,
   },
   {
@@ -71,9 +76,10 @@ const Loans = [
     updatedOn: '6/12/2019',
     status: 'approved',
     repaid: false,
-    tenor: 6,
+    tenor: 2,
     amount: 21000.00,
     paymentInstallment: 6000.00,
+    paidAmount: 0,
     balance: 120000,
     interest: 6000,
   },
@@ -87,7 +93,8 @@ const Loans = [
     tenor: 6,
     amount: 21000.00,
     paymentInstallment: 6000.00,
-    balance: 120000,
+    paidAmount: 21000,
+    balance: 0,
     interest: 6000
   }
 ];

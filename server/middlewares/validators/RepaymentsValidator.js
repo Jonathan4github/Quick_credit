@@ -9,7 +9,7 @@ class RepaymentsValidator {
   * @return {obj} return json object.
   */
   static validateLoanId(req, res, next) {
-    const loanId = parseInt(req.params.id, 10);
+    const loanId = Number(req.params.id);
     const isnum = /^\d+$/.test(loanId);
     const loanIdExist = loanData.find(loan => loan.id === loanId);
 
@@ -24,7 +24,7 @@ class RepaymentsValidator {
 
   static validateRepayment(req, res, next) {
     const loanId = parseInt(req.params.id, 10);
-    const loan = loanData.find(loans => loans.id === loanId);
+    const loan = loanData.find(loan => loan.id === loanId);
     if (loan.balance === 0) {
       return res.status(200).json({
         status: 200,

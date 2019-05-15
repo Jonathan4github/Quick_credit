@@ -33,7 +33,7 @@ const Helper = {
 
   /**
    * Gnerate Token
-   * @param {string} payload
+   * @param {string} id
    * @returns {string} token
    */
   generateToken(id) {

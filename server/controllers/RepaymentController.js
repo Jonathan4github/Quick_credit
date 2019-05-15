@@ -28,18 +28,19 @@ class RepaymentsContoller {
     }
     return res.status(200).json({
       status: 200,
+      message: 'Retrieve repayments successful',
       data: result
     });
   }
 
   static createRepayment(req, res) {
     const loanId = parseInt(req.params.id, 10);
-    const loan = loanData.find(loans => loans.id === loanId);
+    const loan = loanData.find(loan => loan.id === loanId);
     const amount = parseFloat(loan.amount);
     const { payInstallment } = loan;
     let paidAmount = payInstallment;
 
-    const repayments = repaymentsData.filter((repayment) => {
+    const repayments = repaymentsData.map((repayment) => {
       repayment.loanId == loanId ? paidAmount += repayment.amount : null;
     });
 
@@ -58,6 +59,7 @@ class RepaymentsContoller {
     loan.balance === 0? loan.repaid = true: false;
     return res.status(201).json({
       status: 201,
+      message: 'Repayment transaction was succesful',
       id: repaymentsData.length + 1,
       createdOn: moment(new Date()),
       loanId,
