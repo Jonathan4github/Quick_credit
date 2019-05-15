@@ -25,17 +25,17 @@
       <p>Jonathan</p>
     </div>
     <a href="dashboard.html">
-        <i class="fa fa-dashboard fa-margin"></i> Dashboard</a>
-      <a href="clients.html">
-        <i class="fa fa-users fa-margin"></i> Clients</a>
-      <a href="loan_applications.html">
-        <i class="fa fa-pencil fa-margin"></i> Loan applications</a>
-      <a href="post_repayment.html">
-        <i class="fa fa-edit fa-margin"></i> Post repayment</a>
-      <a href="repayment_history.html">
-        <i class="fa fa-history fa-margin"></i> Repayment history</a>
-      <a href="../index.html">
-        <i class="fa fa-sign-out fa-margin"></i> Logout</a>
+      <i class="fa fa-dashboard fa-margin"></i> Dashboard</a>
+    <a href="clients.html">
+      <i class="fa fa-users fa-margin"></i> Clients</a>
+    <a href="loan_applications.html">
+      <i class="fa fa-pencil fa-margin"></i> Loan applications</a>
+    <a href="post_repayment.html">
+      <i class="fa fa-edit fa-margin"></i> Post repayment</a>
+    <a href="repayment_history.html">
+      <i class="fa fa-history fa-margin"></i> Repayment history</a>
+    <a href="../index.html">
+      <i class="fa fa-sign-out fa-margin"></i> Logout</a>
 
   </div>
   <main id="main">
@@ -50,22 +50,54 @@
 
           <div class="card-content">
             <form>
-              <input type="text" name="clientId" placeholder="Enter Client Id *" required/>
               <input type="text" name="loanId" placeholder="Enter Loan Id *" required/>
-              <input type="date" name="repaymentDate" required/>
-              <input type="text" name="amount" placeholder="Enter Amount *" required/>
               <input type="submit" value="Pay" class="btn">
             </form>
+            <table class="repayment-table">
+              <tr>
+                <th>Date</th>
+                <td>5/15/2019</td>
+              </tr>
+              <tr>
+                <th>Fullname</th>
+                <td>Jonathan Williams</td>
+              </tr>
+              <tr>
+                <th>LoanId</th>
+                <td>008</td>
+              </tr>
+              <tr>
+                <th>Amount</th>
+                <td>100,000</td>
+              </tr>
+              <tr>
+                <th>Interest</th>
+                <td>5000</td>
+              </tr>
+              <tr>
+                <th>Total due</th>
+                <td>105,000</td>
+              </tr>
+              <tr>
+                <th>Monthly Installment</th>
+                <td>26,500</td>
+              </tr>
+              <tr>
+                <th>Paid Amount</th>
+                <td>53,000</td>
+              </tr>
+              <tr>
+                <th>Balance</th>
+                <td>52,000</td>
+              </tr>
+
+            </table>
           </div>
         </div>
       </div>
     </div>
 
   </main>
-  <footer class="footer">
-    <p>&copy; 2019 Andela Bootcamp Quick Credit</p>
-  </footer>
-
   <!--JavaScript at end of body for optimized loading-->
   <script type="text/javascript" src="../public/js/sidebar.js"></script>
 </body>

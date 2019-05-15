@@ -6,7 +6,6 @@
 
 body {
   background-color: #3F51B5;
-
 }
 
 .nav {
@@ -14,10 +13,13 @@ body {
   display: flex;
   justify-content:space-between;
   width:100%;
+  align-items: center;
 }
+
 
 .menu{
   display: flex;
+  margin-right:165px;
 }
 
 .nav a {
@@ -34,12 +36,12 @@ body {
 }
 
 #logo{
-  margin-left:57px;
   background-color: #4285f4;
+  margin-left:165px;
 }
 
 main{
-  width:100%;
+  width: 80%; margin: 0 auto;
   background-color: #3F51B5;
 }
 
@@ -115,21 +117,34 @@ main{
 }
 
 .feature p{
-  color: rgb(20, 19, 19);
+  color: rgb(192, 189, 206);
   text-align: center;
   padding: 20px;
+  font-size: 19px;
 }
 
 #feature1{
   background-color: #3260DA;
 }
 
+#feature1 p{
+  color: rgb(192, 189, 206);
+} 
+
 #feature2{
-  background-color: #ffaf30;
+  background-color: #ffa616;
+}
+
+#feature2 p{
+  color: #fce2af;
 }
 
 #feature3{
   background-color: orangered;
+}
+
+#feature3 p{
+  color: #ffcfb1;
 }
 
 .footer {
@@ -169,7 +184,6 @@ main{
       .feature {
         width:100%;
       }
-
     }
 
     
