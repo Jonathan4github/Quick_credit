@@ -1,6 +1,6 @@
-const { Pool } = require('pg');
-const dotenv = require('dotenv');
-const configuration = require('./server/config/config');
+import { Pool } from 'pg';
+import dotenv from 'dotenv';
+import configuration from '../config/config';
 
 const env = process.env.Node_ENV || 'test';
 const config = configuration[env];
@@ -16,14 +16,15 @@ db.on('connect', () => {
   console.log('connected to the db');
 });
 
-/**
- * Create Signup Table
- */
 const createTables = () => {
-  const query = ` 
-  DROP TABLE IF EXISTS users;
-  DROP TABLE IF EXISTS loans;
-  DROP TABLE IF EXISTS repayments;
+  const query = `
+  TRUNCATE TABLE users
+  TRUNCATE TABLE loans
+  TRUNCATE TABLE repayments
+
+  DROP TABLE IF EXISTS users CASCADE;
+  DROP TABLE IF EXISTS loans CASCADE;
+  DROP TABLE IF EXISTS repayments CASCADE;
   
   CREATE TABLE IF NOT EXISTS users(
   

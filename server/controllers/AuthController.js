@@ -1,6 +1,7 @@
 import dotenv from 'dotenv';
-import userData from '../models/Users';
 import Helper from '../helpers/AuthHelper';
+import moment from 'moment';
+import db from '../models/db';
 
 dotenv.config();
 
@@ -13,51 +14,30 @@ class AuthController {
    * @return {obj} return json object user.
    */
   static signup(req, res) {
-    const {
-      firstName, lastName, email, password
-    } = req.body;
+    const { firstName, lastName, email, password } = req.body;
     const hashPassword = Helper.hashPassword(password);
-    const newUser = {
-      id: userData.length + 1,
-      firstName,
-      lastName,
-      email,
-      password: hashPassword
-    };
 
-    userData.push(newUser);
-    const token = Helper.generateToken(newUser.id);
-    req.token = token;
-    return res.status(201)
-      .json({
-        status: 201,
-        data: [{
-          token,
-          user: newUser
-        }]
-      });
-  }
+    const createQuery =
+      'INSERT INTO users (firstName, lastName, email, password, created_date, modified_date)  VALUES($1, $2, $3, $4, $5, $6) returning *';
+    const values = [firstName, lastName, email, hashPassword, moment(new Date()), moment(new Date())];
 
-  static signin(req, res) {
-    const { email, password } = req.body;
-    const user = userData.find(user => user.email === email);
-    if (user) {
-      const isPassword = Helper.comparePassword(user.password, password);
-      if (isPassword) {
-        const token = Helper.generateToken(user.id);
-        req.token = token;
-        return res.status(200).json({
-          status: 200,
-          data: [{
-            token,
-            message: 'login successfully'
-          }]
+    db.query(createQuery, values, (error, user) => {
+      if (error) {
+        return res.status(500).json({
+          status: 'Failed',
+          message: error
         });
       }
-    }
-    return res.status(401).json({
-      status: 401,
-      error: 'The credentials you provided is incorrect'
+      const token = Helper.generateToken(user.rows[0].id);
+      req.token = token;
+      return res.status(201).json({
+        message: 'Signed up sucessfully',
+        status: 201,
+        data: [{
+          token: token,
+          user: user.rows[0]
+        }]
+      });
     });
   }
 }

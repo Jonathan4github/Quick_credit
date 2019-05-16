@@ -5,6 +5,12 @@ const defaultConfig = {
   dialect: 'postgres'
 };
 
+const testConfig = {
+  url: process.env.TEST_URL,
+  dialect: 'postgres'
+}
+
 module.exports = {
   development: defaultConfig,
+  test: testConfig
 };
