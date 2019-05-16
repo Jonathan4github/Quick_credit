@@ -223,4 +223,65 @@ describe('All test case for QuickCredit', () => {
       });
     });
   });
+
+  describe('Test case for sigin', ()=> {
+    it('should return 422 Signin: email and password undefined', done => {
+      chai.request(app).post('/api/v1/auth/signin/')
+        .send({
+    
+        })
+        .end((err, res) => {
+          res.should.have.status(422);
+          res.body.error.should.equal('All or some of the field is/are undefined');
+          done();
+        });
+    });
+    it('should return 422 Signin: invalid email address', done => {
+      chai.request(app).post('/api/v1/auth/signin/')
+        .send({
+          email: 'gmail.com',
+          password: 'password'
+        })
+        .end((err, res) => {
+          res.should.have.status(422);
+          res.body.email.should.equal('Please enter a valid email');
+          done();
+        });
+    });
+    it('should return 422 Signin: invalid password length', done => {
+      chai.request(app).post('/api/v1/auth/signin/')
+        .send({
+          email: 'jo@gmail.com',
+          password: ''
+        })
+        .end((err, res) => {
+          res.should.have.status(422);
+          res.body.password.should.equal('Please enter a valid password');
+          done();
+        });
+    });
+    it('should return 401 Signin: invalid credential', done => {
+      chai.request(app).post('/api/v1/auth/signin/')
+        .send({
+          email: 'jo@gmail.com',
+          password: '91passord'
+        })
+        .end((err, res) => {
+          res.should.have.status(401);
+          res.body.error.should.equal('The credentials you provided is incorrect');
+          done();
+        });
+    });
+    it('should return 200 Signin: valid credential', done => {
+      chai.request(app).post('/api/v1/auth/signin/')
+        .send({
+          email: 'jo@gmail.com',
+          password: 'password'
+        })
+        .end((err, res) => {
+          res.should.have.status(200);
+          done();
+        });
+    });
+  });
 });
