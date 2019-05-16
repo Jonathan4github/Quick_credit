@@ -284,4 +284,79 @@ describe('All test case for QuickCredit', () => {
         });
     });
   });
+  describe('Test case for setting up user role', ()=> {
+    it('should return 422 for undefined email and isAdmin', done => {
+      chai.request(app).post('/api/v1/users/role')
+        .send({   
+        })
+        .end((err, res) => {
+          res.should.have.status(422);
+          res.body.error.should.equal('All or some of the field is/are undefined');
+          done();
+        });
+    });
+    it('should return 422 for invalid email', done => {
+      chai.request(app).post('/api/v1/users/role')
+        .send({
+          email: 'joh',
+          isAdmin: 'true'   
+        })
+        .end((err, res) => {
+          res.should.have.status(422);
+          res.body.email.should.equal('Please enter a valid email');
+          done();
+        });
+    });
+    it('should return 422 for invalid email', done => {
+      chai.request(app).post('/api/v1/users/role')
+        .send({
+          email: 'joh',
+          isAdmin: 'true'   
+        })
+        .end((err, res) => {
+          res.should.have.status(422);
+          res.body.email.should.equal('Please enter a valid email');
+          done();
+        });
+    });
+    it('should return 422 for invalid isAdmin', done => {
+      chai.request(app).post('/api/v1/users/role')
+        .send({
+          email: 'john@gmail.com',
+          isAdmin: 'trueeee'   
+        })
+        .end((err, res) => {
+          res.should.have.status(422);
+          res.body.isAdmin.should.equal('isAdmin should be true or false');
+          done();
+        });
+    });
+    it('should return 200 for valid inputs', done => {
+      chai.request(app).post('/api/v1/users/role')
+        .send({
+          email: 'jo@gmail.com',
+          isAdmin: 'true'   
+        })
+        .end((err, res) => {
+          res.should.have.status(200);
+          res.body.data.should.equal('User updated successfully');
+          done();
+        });
+    });
+    it('should return 404 for user not found', done => {
+      chai.request(app).post('/api/v1/users/role')
+        .send({
+          email: 'john@gmail.com',
+          isAdmin: 'true'   
+        })
+        .end((err, res) => {
+          res.should.have.status(404);
+          res.body.error.should.equal('User with the given email not found');
+          done();
+        });
+    });
+    
+
+
+  })
 });
