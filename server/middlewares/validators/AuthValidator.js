@@ -47,6 +47,29 @@ class UserValidation {
       return next();
     });
   }
+
+  static Signin(req, res, next) {
+    const { email, password } = req.body,
+      errorMessage = {};
+
+    if (email === undefined || password === undefined) {
+      return res.status(422).json({
+        status: 422,
+        error: 'All or some of the field is/are undefined'
+      });
+    }
+
+    if (!Helper.isValidEmail(email)) {
+      errorMessage.email = 'Please enter a valid email';
+    }
+    if (!validator.isLength(password, { min: 7, max: 20 })) {
+      errorMessage.password = 'Please enter a valid password';
+    }
+    if (!(Object.keys(errorMessage).length === 0)) {
+      return res.status(422).json(errorMessage);
+    }
+    return next();
+  }
 }
 
 export default UserValidation;
