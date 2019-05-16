@@ -35,7 +35,7 @@ class UserValidation {
         errorMessage.lastName = 'Last name should be all alphalbet';
       }
 
-      if (!Helper.isValidEmail(email)) {
+      if (!validator.isEmail(email)) {
         errorMessage.email = 'Please enter a valid email';
       }
       if (!validator.isLength(password, { min: 7, max: 20 })) {
