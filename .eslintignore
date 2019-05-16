@@ -5,3 +5,5 @@ controllers
 middlewares
 .eslintrc.js
 client
+db.js
+server/config
