@@ -10,15 +10,15 @@ class UserValidation {
 
     if (firstName === undefined || lastName === undefined || email === undefined || password === undefined) {
       return res.status(422).json({
-        status: 422,
+        status: 'Failed',
         error: 'All or some of the field is/are undefined'
       });
     }
-    //Search through database to check if email exits
+    
     db.query(`SELECT id FROM users WHERE email = '${email}'`).then(userfound => {
       if (userfound.rows.length > 0) {
         return res.status(409).json({
-          status: 409,
+          status: 'Failed',
           error: 'The email you entered already exist'
         });
       }
@@ -54,7 +54,7 @@ class UserValidation {
 
     if (email === undefined || password === undefined) {
       return res.status(422).json({
-        status: 422,
+        status: 'Failed',
         error: 'All or some of the field is/are undefined'
       });
     }

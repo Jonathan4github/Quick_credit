@@ -1,9 +1,8 @@
 
 const isAdmin = (req, res, next) => {
-
-  if (req.user.rows[0].isadmin === false) {
+  if (req.user.isAdmin === false) {
     return res.status(403).json({
-      status: 'Failed',
+      status: 403,
       error: 'Access Denied'
     })
   };
