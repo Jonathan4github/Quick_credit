@@ -1,9 +1,6 @@
 language: node_js
-env:
-  - TEST_URL=postgres://dgkowzsc:U497tjCtT6iHaVp7YvpVic_as8YiXi4v@isilo.db.elephantsql.com:5432/dgkowzsc
   global:
     - CC_TEST_REPORTER_ID=2d8148c3a07d0a93a2d5268616d7a8bba4d5a76b32743757ca740e35a81cb1d6
-language: node_js
 node_js:
   - "8.12.0"
 services:
