@@ -51,7 +51,6 @@ body {
 
 main {
   width:100%;
-  height: 100vh;
   background-color: #f6f9fc;
 }
 
@@ -181,18 +180,6 @@ input[type=submit] {
 }
 
 
-
-.card {
-  width:80%;
-  background-color:#fff;
-  height:600px;
-  padding:20px;
-  text-align: center;
-  color:#000;
-  border-radius: 5px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-}
-
 .card-title {
   font-size: 17px;
   font-family: "Times New Roman", Times, serif;
@@ -274,7 +261,7 @@ tr:hover {
 
 @media screen and (max-width: 660px) {
 
-  .card {
+  .apply-detail-card {
     width:100%;
     height:100vh;
   }
