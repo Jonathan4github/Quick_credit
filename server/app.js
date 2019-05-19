@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import Debug from 'debug';
 import authRoutes from './routes/auth/router';
 import userRoutes from './routes/user/router';
+import loanRoutes from './routes/loan/router';
 
 const app = express();
 const debug = Debug('rest');
@@ -19,6 +20,7 @@ app.get('/', (req, res) => {
 
 app.use('/api/v1/', authRoutes);
 app.use('/api/v1/', userRoutes);
+app.use('/api/v1/', loanRoutes);
 app.use('*', (req, res) => {
   res.status(404).json({
     status: 404,
