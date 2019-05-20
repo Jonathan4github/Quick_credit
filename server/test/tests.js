@@ -597,5 +597,50 @@ describe('All test case for QuickCredit', () => {
           done();
         });
     });
+    it('should return 200 valid loan id', done => {
+      chai
+        .request(app)
+        .get('/api/v1/loans/')
+        .set('Content-Type', 'application/json')
+        .set('x-access-token', token)
+        .end((err, res) => {
+          res.should.have.status(200);
+          done();
+        });
+    });
+    it('should return all current loans that are not fully repaid', done => {
+      chai
+        .request(app)
+        .get('/api/v1/loans?status=approved&repaid=false')
+        .set('Content-Type', 'application/json')
+        .set('x-access-token', token)
+        .end((err, res) => {
+          res.should.have.status(200);
+          done();
+        });
+    });
+    it('should return all repaid loan', done => {
+      chai
+        .request(app)
+        .get('/api/v1/loans?status=approved&repaid=true')
+        .set('Content-Type', 'application/json')
+        .set('x-access-token', token)
+        .end((err, res) => {
+          res.should.have.status(200);
+          done();
+        });
+    });
+    it('should return 400 repaid value is required from query params', done => {
+      chai
+        .request(app)
+        .get('/api/v1/loans?status=approved&repaid=tre')
+        .set('Content-Type', 'application/json')
+        .set('x-access-token', token)
+        .end((err, res) => {
+          res.should.have.status(400);
+          res.body.repaid.should.equal('repaid value is required & should be true or false');
+          done();
+        });
+    });
   });
 });
