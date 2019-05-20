@@ -44,7 +44,19 @@ describe('All test case for QuickCredit', () => {
             password: 'password'
           })
           .end((err, res) => {
-
+            done();
+          });
+      });
+      it('should return 201 for valid credentials', (done) => {
+        chai.request(app).post(signupRoute)
+          .send({
+            firstName: 'Philip',
+            lastName: 'Thomason',
+            email: 'Philip@gmail.com',
+            password: 'password'
+          })
+          .end((err, res) => {
+            res.should.have.status(201);
             done();
           });
       });
@@ -372,7 +384,7 @@ describe('All test case for QuickCredit', () => {
     });
     it('Should return 200 valid email and role Admin', done => {
       chai.request(app).patch('/api/v1/users/Philip@gmail.com/verify')
-      .set('x-access-token', token)
+        .set('x-access-token', token)
         .end((err, res) => {
           res.should.have.status(200);
           done();
@@ -380,7 +392,7 @@ describe('All test case for QuickCredit', () => {
     });
     it('Should return 422 invalid email', done => {
       chai.request(app).patch('/api/v1/users/@.com/verify')
-      .set('x-access-token', token)
+        .set('x-access-token', token)
         .end((err, res) => {
           res.should.have.status(422);
           res.body.error.should.equal('Please enter a valid email');
@@ -389,7 +401,7 @@ describe('All test case for QuickCredit', () => {
     });
     it('Should return 404 email not found', done => {
       chai.request(app).patch('/api/v1/users/daniel@gmail.com/verify')
-      .set('x-access-token', token)
+        .set('x-access-token', token)
         .end((err, res) => {
           res.should.have.status(404);
           res.body.error.should.equal('User with the given email not found');
@@ -398,7 +410,7 @@ describe('All test case for QuickCredit', () => {
     });
     it('Should return 200 User with the given email has already been verified', done => {
       chai.request(app).patch('/api/v1/users/Philip@gmail.com/verify')
-      .set('x-access-token', token)
+        .set('x-access-token', token)
         .end((err, res) => {
           res.should.have.status(200);
           res.body.message.should.equal('User with the given email has already been verified');
@@ -419,20 +431,171 @@ describe('All test case for QuickCredit', () => {
     });
     it('Should return 403 not Admin', done => {
       chai.request(app).patch('/api/v1/users/Philip@gmail.com/verify')
-      .set('x-access-token', token)
+        .set('x-access-token', token)
         .end((err, res) => {
           res.should.have.status(403);
           done();
         });
     });
-    it('Should return 401 wrong token', done => {
+    it('Should return 401 wrong token ', done => {
       chai.request(app).patch('/api/v1/users/Philip@gmail.com/verify')
-      .set('x-access-token', wrongToken)
+        .set('x-access-token', wrongToken)
         .end((err, res) => {
           res.should.have.status(401);
           res.body.error.should.equal('Invalid user');
           done();
         });
-    });    
+    });
+  });
+  describe('Test case for loan application', () => {
+    it(`should return 400 for invalid amount value`, done => {
+      chai
+        .request(app)
+        .post('/api/v1/loans')
+        .set('x-access-token', token)
+        .send({
+          amount: 'wrongInput',
+          tenor: 7
+        })
+        .end((err, res) => {
+          res.should.have.status(400);
+          res.body.amount.should.equal('amount should be number & not less than 1000 or above 10000000');
+          done();
+        });
+    });
+    it(`should return 400 for invalid tenor value`, done => {
+      chai
+        .request(app)
+        .post('/api/v1/loans')
+        .set('x-access-token', token)
+        .send({
+          amount: 10000,
+          tenor: 13
+        })
+        .end((err, res) => {
+          res.should.have.status(400);
+          res.body.tenor.should.equal('tenor should be number & not less than 1 or above 12');
+          done();
+        });
+    });
+    it(`should return 200 for valid inputs`, done => {
+      chai
+        .request(app)
+        .post('/api/v1/loans')
+        .set('x-access-token', token)
+        .send({
+          amount: 10000,
+          tenor: 5
+        })
+        .end((err, res) => {
+          res.should.have.status(200);
+          done();
+        });
+    });
+
+    it('Oustanding user signed in', done => {
+      chai.request(app).post('/api/v1/auth/signin/')
+        .send({
+          email: 'Philip@gmail.com',
+          password: 'password'
+        })
+        .end((err, res) => {
+          res.should.have.status(200);
+          token = res.body.data[0].token;
+          done();
+        });
+    });
+    it(`Shoud return 400 for outstanding user trying to apply again`, done => {
+      chai
+        .request(app)
+        .post('/api/v1/loans')
+        .set('x-access-token', token)
+        .send({
+          amount: 10000,
+          tenor: 5
+        })
+        .end((err, res) => {
+          res.should.have.status(400);
+          res.body.error.should.equal('You cannot apply. You still have outstanding');
+          done();
+        });
+    });
+    it('Unverified user signed in', done => {
+      chai.request(app).post('/api/v1/auth/signin/')
+        .send({
+          email: 'jo@gmail.com',
+          password: 'password'
+        })
+        .end((err, res) => {
+          res.should.have.status(200);
+          token = res.body.data[0].token;
+          done();
+        });
+    });
+    it(`Shoud return 400 unverified user`, done => {
+      chai
+        .request(app)
+        .post('/api/v1/loans')
+        .set('x-access-token', token)
+        .send({
+          amount: 10000,
+          tenor: 5
+        })
+        .end((err, res) => {
+          res.should.have.status(400);
+          res.body.error.should.equal('You are not yet verified');
+          done();
+        });
+    });
+  });
+
+  describe('Test case for get a specific loan application', () => {
+    it('Admin signed in', done => {
+      chai.request(app).post('/api/v1/auth/signin/')
+        .send({
+          email: 'jo@gmail.com',
+          password: 'password'
+        })
+        .end((err, res) => {
+          res.should.have.status(200);
+          token = res.body.data[0].token;
+          done();
+        });
+    });
+    it('should return status 422 invalid loan id', done => {
+      chai
+        .request(app)
+        .get('/api/v1/loans/1.5')
+        .set('Content-Type', 'application/json')
+        .set('x-access-token', token)
+        .end((err, res) => {
+          res.should.have.status(422);
+          res.body.error.should.equal('Invalid id');
+          token = token;
+          done();
+        });
+    });
+    it('should return 404 loan id not found', done => {
+      chai
+        .request(app)
+        .get('/api/v1/loans/13')
+        .set('Content-Type', 'application/json')
+        .set('x-access-token', token)
+        .end((err, res) => {
+          res.should.have.status(404);
+          done();
+        });
+    });
+    it('should return 200 valid loan id', done => {
+      chai
+        .request(app)
+        .get('/api/v1/loans/1')
+        .set('Content-Type', 'application/json')
+        .set('x-access-token', token)
+        .end((err, res) => {
+          res.should.have.status(200);
+          done();
+        });
+    });
   });
 });

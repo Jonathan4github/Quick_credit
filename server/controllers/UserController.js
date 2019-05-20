@@ -16,13 +16,7 @@ class UserController {
     const createQuery = `UPDATE  users SET isAdmin = $1, modified_date=$2 WHERE email = $3`;
     const values = [isAdmin, moment(new Date()), email];
 
-    db.query(createQuery, values, (err, user) => {
-      if (err) {
-        return res.status(500).json({
-          status: 'Failed',
-          message: err.message
-        });
-      }
+    db.query(createQuery, values).then(user => {
       if (user.rowCount === 0) {
         return res.status(404).json({
           status: 404,
@@ -33,7 +27,7 @@ class UserController {
         status: 200,
         data: 'User updated successfully',
       });
-    });
+    }).catch(e=>(e));
   }
 
   static markVerified(req, res) {
@@ -41,13 +35,7 @@ class UserController {
     const createQuery = `UPDATE  users SET status = $1, modified_date=$2 WHERE email = $3`;
     const values = ['verified', moment(new Date()), email];
 
-    db.query(createQuery, values, (err, user) => {
-      if (err) {
-        return res.status(500).json({
-          status: 'Failed',
-          message: err.message
-        });
-      }
+    db.query(createQuery, values).then(user => {
       const createQuery = `SELECT * FROM users WHERE email = $1`;
       db.query(createQuery, [email], (error, user) => {
         return res.status(200).json({
@@ -55,9 +43,8 @@ class UserController {
           message: `User with the email ${email} has been verified`,
           data: user.rows[0]
         });
-
       });
-    });
+    }).then(e=>(e));
   }
 }
 

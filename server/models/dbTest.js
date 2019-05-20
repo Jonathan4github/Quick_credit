@@ -18,14 +18,10 @@ db.on('connect', () => {
 
 const createTables = () => {
   const query = `
-  TRUNCATE TABLE users
-  TRUNCATE TABLE loans
-  TRUNCATE TABLE repayments
+  DROP TABLE IF EXISTS "public"."users" CASCADE;
+  DROP TABLE IF EXISTS "public"."loans" CASCADE;
+  DROP TABLE IF EXISTS "public"."repayments" CASCADE;
 
-  DROP TABLE IF EXISTS users CASCADE;
-  DROP TABLE IF EXISTS loans CASCADE;
-  DROP TABLE IF EXISTS repayments CASCADE;
-  
   CREATE TABLE IF NOT EXISTS users(
   
     id serial PRIMARY KEY,

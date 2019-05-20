@@ -21,16 +21,10 @@ class AuthController {
       'INSERT INTO users (firstName, lastName, email, password, created_date, modified_date)  VALUES($1, $2, $3, $4, $5, $6) returning *';
     const values = [firstName, lastName, email, hashPassword, moment(new Date()), moment(new Date())];
 
-    db.query(createQuery, values, (error, user) => {
-      if (error) {
-        return res.status(500).json({
-          status: 'Failed',
-          message: error
-        });
-      }
+    db.query(createQuery, values).then(user => {
       const token = Helper.generateToken(user.rows[0].id);
       req.token = token;
-      return res.status(201).json({
+      return res.status(201).send({
         message: 'Signed up sucessfully',
         status: 201,
         data: [{
@@ -38,7 +32,7 @@ class AuthController {
           user: user.rows[0]
         }]
       });
-    });
+    }).catch(e=>(e));
   }
   /**
    * Method for signing in User
@@ -50,13 +44,7 @@ class AuthController {
   static signin(req, res) {
     const { email, password } = req.body;
     const createQuery = `SELECT * FROM users WHERE email = '${email}'`;
-    db.query(createQuery, (error, user) => {
-      if (error) {
-        return res.status(500).json({
-          status: 'Failed',
-          message: error
-        });
-      }
+    db.query(createQuery).then(user => {
       if (user.rows[0]) {
         const isPassword = Helper.comparePassword(user.rows[0].password, password);
         if (isPassword) {
@@ -76,7 +64,7 @@ class AuthController {
         status: 401,
         error: 'The credentials you provided is incorrect'
       });
-    });
+    }).catch(e => (e));
   }
 }
 

@@ -2,7 +2,7 @@ const { Pool } = require('pg');
 const dotenv = require('dotenv');
 const configuration = require('./server/config/config');
 
-const env = process.env.Node_ENV || 'test';
+const env = process.env.Node_ENV || 'development';
 const config = configuration[env];
 const connectionString = config.url;
 
@@ -21,9 +21,9 @@ db.on('connect', () => {
  */
 const createTables = () => {
   const query = ` 
-  DROP TABLE IF EXISTS users;
-  DROP TABLE IF EXISTS loans;
-  DROP TABLE IF EXISTS repayments;
+  DROP TABLE IF EXISTS users CASCADE;
+  DROP TABLE IF EXISTS loans CASCADE;
+  DROP TABLE IF EXISTS repayments CASCADE;
   
   CREATE TABLE IF NOT EXISTS users(
   
