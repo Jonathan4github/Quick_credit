@@ -6,12 +6,15 @@ import isAdmin from '../../middlewares/isAdmin';
 import validId from '../../middlewares/validators/validateId';
 
 const router = express.Router();
-const { findOne, loanApplication, sortRepaidLoan } = LoanController;
-const { validateLoanApplication, validateQueryParams } = LoanValidator;
+const {
+  findOne, loanApplication, sortRepaidLoan, applicationStatus
+} = LoanController;
+const { validateLoanApplication, validateQueryParams, loanStatus } = LoanValidator;
 const { verifyToken } = Auth;
 
 router.route('/loans/:id')
-  .get(verifyToken, isAdmin, validId, findOne);
+  .get(verifyToken, isAdmin, validId, findOne)
+  .patch(verifyToken, isAdmin, validId, loanStatus, applicationStatus);
 router.route('/loans/')
   .post(verifyToken, validateLoanApplication, loanApplication)
   .get(verifyToken, isAdmin, validateQueryParams, sortRepaidLoan);

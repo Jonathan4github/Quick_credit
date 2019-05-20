@@ -642,5 +642,32 @@ describe('All test case for QuickCredit', () => {
           done();
         });
     });
+    it(`should return 422 invalid status value`, done => {
+      chai
+        .request(app)
+        .patch('/api/v1/loans/1')
+        .set('x-access-token', token)
+        .send({
+          status: 'appr'
+        })
+        .end((err, res) => {
+          res.should.have.status(422);
+          res.body.error.should.equal('status required & should be approve or reject');
+          done();
+        });
+    });
+    it(`should return 422 invalid status value`, done => {
+      chai
+        .request(app)
+        .patch('/api/v1/loans/1')
+        .set('x-access-token', token)
+        .send({
+          status: 'approve'
+        })
+        .end((err, res) => {
+          res.should.have.status(200);
+          done();
+        });
+    });
   });
 });

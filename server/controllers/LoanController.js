@@ -25,7 +25,7 @@ class LoanController {
         message: 'Loan retrieved successfully',
         data: loan.rows
       })
-    }).catch(e=>(e));
+    }).catch(e => (e));
   }
 
   static loanApplication(req, res) {
@@ -41,9 +41,9 @@ class LoanController {
 
     const values = [req.user.rows[0].id, tenor, amount, balance, interest, payInstallment, total_due, moment(new Date()), moment(new Date())];
 
-    db.query(createQuery, values).then(loan =>{
+    db.query(createQuery, values).then(loan => {
       const { firstname, lastname, email } = req.user.rows[0];
-      const { id, tenor, amount, paymentinstallment, status, balance, interest }  = loan.rows[0];
+      const { id, tenor, amount, paymentinstallment, status, balance, interest } = loan.rows[0];
       return res.status(200).json({
         status: 'Success',
         message: 'Loan apply successfully',
@@ -60,7 +60,7 @@ class LoanController {
           interest
         }
       });
-    }).catch(e =>(e))   
+    }).catch(e => (e))
   }
   static sortRepaidLoan(req, res) {
     let queryParimeters = req.query;
@@ -76,11 +76,11 @@ class LoanController {
           message: 'Loans retrieved Succefully',
           data: loans.rows
         })
-      }).catch((e) =>e)
+      }).catch((e) => e)
     }
     let loanStatus = queryParimeters['status'];
     let loanRepaid = queryParimeters['repaid'];
-  
+
     const createQuery = `SELECT * FROM loans WHERE status = $1 and repaid = $2`;
     const values = [loanStatus, loanRepaid];
     db.query(createQuery, values).then(loans => {
@@ -89,7 +89,24 @@ class LoanController {
         message: 'Loans retrieved Succefully',
         data: loans.rows
       })
-    }).catch((e) =>e)
+    }).catch((e) => e)
+  }
+  static applicationStatus(req, res) {
+    const { status } = req.body;
+    const loanId = req.params.id;
+
+    const createQuery = `UPDATE loans SET status = $1, modified_date=$2 WHERE id = $3`;
+    const values = [status, moment(new Date()), loanId];
+    db.query(createQuery, values).then(loan => {
+      const createQuery = `SELECT * FROM loans WHERE id = $1`;
+      db.query(createQuery, [loanId]).then(loan => {
+        return res.status(200).json({
+          status: 'Success',
+          message: `Loan has been ${status} successfully`,
+          data: loan.rows[0]
+        });
+      });
+    }).catch((e) => e);
   }
 }
 
