@@ -549,7 +549,7 @@ describe('All test case for QuickCredit', () => {
     });
   });
 
-  describe('Test case for get a specific loan application', () => {
+  describe('Test case for Get a specific loan application', () => {
     it('Admin signed in', done => {
       chai.request(app).post('/api/v1/auth/signin/')
         .send({
