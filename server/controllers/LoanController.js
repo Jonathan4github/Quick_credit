@@ -1,6 +1,5 @@
 import db from '../models/db';
 import moment from 'moment';
-import { CLIENT_RENEG_LIMIT } from 'tls';
 
 class LoanController {
   /**
@@ -61,9 +60,36 @@ class LoanController {
           interest
         }
       });
-    }).catch(e =>(e))
+    }).catch(e =>(e))   
+  }
+  static sortRepaidLoan(req, res) {
+    let queryParimeters = req.query;
+    /**
+     * check if query parimeter is empty
+     * return all loan
+     */
+    if (Object.keys(queryParimeters).length === 0) {
+      const createQuery = `SELECT * FROM loans`;
+      db.query(createQuery).then(loans => {
+        return res.status(200).send({
+          status: 'Success',
+          message: 'Loans retrieved Succefully',
+          data: loans.rows
+        })
+      }).catch((e) =>e)
+    }
+    let loanStatus = queryParimeters['status'];
+    let loanRepaid = queryParimeters['repaid'];
   
-   
+    const createQuery = `SELECT * FROM loans WHERE status = $1 and repaid = $2`;
+    const values = [loanStatus, loanRepaid];
+    db.query(createQuery, values).then(loans => {
+      return res.status(200).send({
+        status: 'Success',
+        message: 'Loans retrieved Succefully',
+        data: loans.rows
+      })
+    }).catch((e) =>e)
   }
 }
 
