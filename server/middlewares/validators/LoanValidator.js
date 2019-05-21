@@ -29,6 +29,12 @@ class LoanValidator {
 
     const creatQuery = `SELECT * FROM loans WHERE userId = $1`;
     db.query(creatQuery, [id]).then(loan => {
+      if(loan.rows[0].status !== 'approve') {
+        return res.status(400).send({
+          status: 'Failed',
+          error: `You loan application has not yet been approved`
+        })
+      }
       if (loan.rows !== 0 && loan.rows[0].repaid == false) {
         return res.status(400).send({
           status: 'Failed',

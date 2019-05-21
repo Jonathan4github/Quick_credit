@@ -41,7 +41,10 @@ describe('All test case for QuickCredit', () => {
             firstName: 'Jonathan',
             lastName: 'williams',
             email: 'jo@gmail.com',
-            password: 'password'
+            password: 'password',
+            work_address: 'No 12 Laogos Nigeria',
+            home_address: 'No 12 Laogos Nigeria',
+
           })
           .end((err, res) => {
             done();
@@ -53,7 +56,9 @@ describe('All test case for QuickCredit', () => {
             firstName: 'Philip',
             lastName: 'Thomason',
             email: 'Philip@gmail.com',
-            password: 'password'
+            password: 'password',
+            work_address: 'No 12 Laogos Nigeria',
+            home_address: 'No 12 Laogos Nigeria',
           })
           .end((err, res) => {
             res.should.have.status(201);
@@ -66,7 +71,9 @@ describe('All test case for QuickCredit', () => {
             firstName: 'Jonathan',
             lastName: 'williams',
             email: 'jo@gmail.com',
-            password: 'password'
+            password: 'password',
+            work_address: 'No 12 Laogos Nigeria',
+            home_address: 'No 12 Laogos Nigeria',
           })
           .end((err, res) => {
             res.should.have.status(409);
@@ -86,7 +93,9 @@ describe('All test case for QuickCredit', () => {
       it('should return 422 lastName, email & password undefined', (done) => {
         chai.request(app).post(signupRoute)
           .send({
-            firstName: 'John'
+            firstName: 'John',
+            work_address: 'No 12 Laogos Nigeria',
+            home_address: 'No 12 Laogos Nigeria',
           })
           .end((err, res) => {
             res.should.have.status(422);
@@ -98,7 +107,9 @@ describe('All test case for QuickCredit', () => {
         chai.request(app).post(signupRoute)
           .send({
             firstName: 'John',
-            lastName: 'Sam'
+            lastName: 'Sam',
+            work_address: 'No 12 Laogos Nigeria',
+            home_address: 'No 12 Laogos Nigeria',
           })
           .end((err, res) => {
             res.should.have.status(422);
@@ -111,7 +122,9 @@ describe('All test case for QuickCredit', () => {
           .send({
             firstName: 'John',
             lastName: 'Sam',
-            email: 'john@gmail.com'
+            email: 'john@gmail.com',
+            work_address: 'No 12 Laogos Nigeria',
+            home_address: 'No 12 Laogos Nigeria',
           })
           .end((err, res) => {
             res.should.have.status(422);
@@ -125,11 +138,45 @@ describe('All test case for QuickCredit', () => {
             firstName: 'J',
             lastName: 'Sam',
             email: 'john@gmail.com',
-            password: 'password'
+            password: 'password',
+            work_address: 'No 12 Laogos Nigeria',
+            home_address: 'No 12 Laogos Nigeria',
           })
           .end((err, res) => {
             res.should.have.status(422);
             res.body.firstName.should.equal('First name must not be less than 2 or above 17 characters');
+            done();
+          });
+      });
+      it('should return 422 invalid work address length', (done) => {
+        chai.request(app).post(signupRoute)
+          .send({
+            firstName: 'Jonathan',
+            lastName: 'Sam',
+            email: 'john@gmail.com',
+            password: 'password',
+            work_address: '',
+            home_address: 'No 12 Laogos Nigeria',
+          })
+          .end((err, res) => {
+            res.should.have.status(422);
+            res.body.work_address.should.equal('work address must not be less than 7 or above 30 characters');
+            done();
+          });
+      });
+      it('should return 422 invalid home address length', (done) => {
+        chai.request(app).post(signupRoute)
+          .send({
+            firstName: 'Jonathan',
+            lastName: 'Sam',
+            email: 'john@gmail.com',
+            password: 'password',
+            work_address: 'No 12 Laogos Nigeria',
+            home_address: '',
+          })
+          .end((err, res) => {
+            res.should.have.status(422);
+            res.body.home_address.should.equal('home address must not be less than 7 or above 30 characters');
             done();
           });
       });
@@ -139,7 +186,9 @@ describe('All test case for QuickCredit', () => {
             firstName: 'Jonathan',
             lastName: '',
             email: 'john@gmail.com',
-            password: 'password'
+            password: 'password',
+            work_address: 'No 12 Laogos Nigeria',
+            home_address: 'No 12 Laogos Nigeria',
           })
           .end((err, res) => {
             res.should.have.status(422);
@@ -153,7 +202,9 @@ describe('All test case for QuickCredit', () => {
             firstName: 'Jonathan',
             lastName: '',
             email: '@gmail.com',
-            password: 'password'
+            password: 'password',
+            work_address: 'No 12 Laogos Nigeria',
+            home_address: 'No 12 Laogos Nigeria',
           })
           .end((err, res) => {
             res.should.have.status(422);
@@ -167,7 +218,9 @@ describe('All test case for QuickCredit', () => {
             firstName: 'Jonathan',
             lastName: 'Williams',
             email: 'john@gmail.com',
-            password: 'pas'
+            password: 'pas',
+            work_address: 'No 12 Laogos Nigeria',
+            home_address: 'No 12 Laogos Nigeria',
           })
           .end((err, res) => {
             res.should.have.status(422);
@@ -181,7 +234,9 @@ describe('All test case for QuickCredit', () => {
             firstName: '',
             lastName: '',
             email: '',
-            password: ''
+            password: '',
+            work_address: 'No 12 Laogos Nigeria',
+            home_address: 'No 12 Laogos Nigeria',
           })
           .end((err, res) => {
             res.should.have.status(422);
@@ -198,7 +253,9 @@ describe('All test case for QuickCredit', () => {
             firstName: 'Jonathan',
             lastName: 'Williams',
             email: 'gmail.com',
-            password: 'password'
+            password: 'password',
+            work_address: 'No 12 Laogos Nigeria',
+            home_address: 'No 12 Laogos Nigeria',
           })
           .end((err, res) => {
             res.should.have.status(422);
@@ -212,7 +269,9 @@ describe('All test case for QuickCredit', () => {
             firstName: 'Jonathan12',
             lastName: 'Williams',
             email: 'gmail.com',
-            password: 'password'
+            password: 'password',
+            work_address: 'No 12 Laogos Nigeria',
+            home_address: 'No 12 Laogos Nigeria',
           })
           .end((err, res) => {
             res.should.have.status(422);
@@ -226,7 +285,9 @@ describe('All test case for QuickCredit', () => {
             firstName: 'Jonathan',
             lastName: 'Williams12',
             email: 'gmail.com',
-            password: 'password'
+            password: 'password',
+            work_address: 'No 12 Laogos Nigeria',
+            home_address: 'No 12 Laogos Nigeria',
           })
           .end((err, res) => {
             res.should.have.status(422);
@@ -505,21 +566,7 @@ describe('All test case for QuickCredit', () => {
           done();
         });
     });
-    it(`Shoud return 400 for outstanding user trying to apply again`, done => {
-      chai
-        .request(app)
-        .post('/api/v1/loans')
-        .set('x-access-token', token)
-        .send({
-          amount: 10000,
-          tenor: 5
-        })
-        .end((err, res) => {
-          res.should.have.status(400);
-          res.body.error.should.equal('You cannot apply. You still have outstanding');
-          done();
-        });
-    });
+    
     it('Unverified user signed in', done => {
       chai.request(app).post('/api/v1/auth/signin/')
         .send({
@@ -668,6 +715,6 @@ describe('All test case for QuickCredit', () => {
           res.should.have.status(200);
           done();
         });
-    });
+    });  
   });
 });
