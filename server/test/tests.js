@@ -703,7 +703,7 @@ describe('All test case for QuickCredit', () => {
           done();
         });
     });
-    it(`should return 422 invalid status value`, done => {
+    it(`should return 200 valid status value`, done => {
       chai
         .request(app)
         .patch('/api/v1/loans/1')
