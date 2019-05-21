@@ -21,9 +21,9 @@ db.on('connect', () => {
  */
 const createTables = () => {
   const query = ` 
-  DROP TABLE IF EXISTS users CASCADE;
-  DROP TABLE IF EXISTS loans CASCADE;
-  DROP TABLE IF EXISTS repayments CASCADE;
+  DROP TABLE IF EXISTS "public"."users" CASCADE;
+  DROP TABLE IF EXISTS "public"."loans" CASCADE;
+  DROP TABLE IF EXISTS "public"."repayments" CASCADE;
   
   CREATE TABLE IF NOT EXISTS users(
   
@@ -34,6 +34,10 @@ const createTables = () => {
     lastName VARCHAR(150) NOT NULL,
   
     email VARCHAR(255) UNIQUE NOT NULL,
+
+    work_address VARCHAR(255),
+
+    home_address VARCHAR(255),
   
     password VARCHAR(255) NOT NULL,
     
@@ -58,7 +62,7 @@ const createTables = () => {
     
     status VARCHAR(150) DEFAULT 'pending',
 
-    repaid BOOLEAN DEFAULT FALSE,
+    repaid BOOLEAN DEFAULT 'false',
 
     tenor NUMERIC NOT NULL,
 
@@ -69,6 +73,8 @@ const createTables = () => {
     paymentInstallment NUMERIC NOT NULL,
 
     total_due NUMERIC NOT NULL,
+
+    paid_amount NUMERIC DEFAULT 0,
 
     balance NUMERIC NOT NULL,    
   

@@ -16,12 +16,13 @@ db.on('connect', () => {
   console.log('connected to the db');
 });
 
+
 const createTables = () => {
-  const query = `
+  const query = ` 
   DROP TABLE IF EXISTS "public"."users" CASCADE;
   DROP TABLE IF EXISTS "public"."loans" CASCADE;
   DROP TABLE IF EXISTS "public"."repayments" CASCADE;
-
+  
   CREATE TABLE IF NOT EXISTS users(
   
     id serial PRIMARY KEY,
@@ -31,6 +32,10 @@ const createTables = () => {
     lastName VARCHAR(150) NOT NULL,
   
     email VARCHAR(255) UNIQUE NOT NULL,
+
+    work_address VARCHAR(255),
+
+    home_address VARCHAR(255),
   
     password VARCHAR(255) NOT NULL,
     
@@ -66,6 +71,8 @@ const createTables = () => {
     paymentInstallment NUMERIC NOT NULL,
 
     total_due NUMERIC NOT NULL,
+
+    paid_amount NUMERIC DEFAULT 0,
 
     balance NUMERIC NOT NULL,    
   

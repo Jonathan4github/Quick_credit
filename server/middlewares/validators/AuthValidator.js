@@ -5,10 +5,11 @@ import db from '../../models/db';
 
 class UserValidation {
   static Signup(req, res, next) {
-    const { firstName, lastName, email, password } = req.body,
+    const { firstName, lastName, email, password, work_address, home_address } = req.body,
       errorMessage = {};
 
-    if (firstName === undefined || lastName === undefined || email === undefined || password === undefined) {
+    if (firstName === undefined || lastName === undefined || email === undefined || password === undefined
+    || work_address === undefined || home_address === undefined) {
       return res.status(422).json({
         status: 'Failed',
         error: 'All or some of the field is/are undefined'
@@ -41,6 +42,13 @@ class UserValidation {
       if (!validator.isLength(password, { min: 7, max: 20 })) {
         errorMessage.password = 'password must not be less than 7 or above 10 characters';
       }
+      if (!validator.isLength(work_address, { min: 7, max: 30 })) {
+        errorMessage.work_address = 'work address must not be less than 7 or above 30 characters';
+      }
+      if (!validator.isLength(home_address, { min: 7, max: 30 })) {
+        errorMessage.home_address = 'home address must not be less than 7 or above 30 characters';
+      }
+
       if (!(Object.keys(errorMessage).length === 0)) {
         return res.status(422).json(errorMessage);
       }
