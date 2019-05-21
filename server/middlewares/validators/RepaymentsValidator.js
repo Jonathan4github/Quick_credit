@@ -31,6 +31,21 @@ class RepaymentsValidator {
     }).catch(e =>(e));
     return next();
   }
+
+  static getRepaymentsValidator (req, res, next){
+    const id = req.params.id;
+    const createQuery = `SELECT * FROM loans WHERE id = $1`;
+
+    db.query(createQuery, [id]).then(loan => {
+      if(loan.rowCount == '0'){
+        return res.status(404).send({
+            status: 404,
+            error: 'Loan with the provided id does not exist'
+        });
+      }
+    }).catch(e=>(e));
+    return next();
+  }
 }
 
 export default RepaymentsValidator;
