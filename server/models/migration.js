@@ -12,11 +12,6 @@ const db = new Pool({
   connectionString
 });
 
-db.on('connect', () => {
-  console.log('connected to the db');
-});
-
-
 const createTables = () => {
   const query = ` 
   DROP TABLE IF EXISTS "public"."users" CASCADE;
