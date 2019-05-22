@@ -22,14 +22,14 @@ class AuthTokenOrPassword {
           return res.status(401).json({
             status: 'Failed',
             error: 'The credential you provided is invalid'
-          })
+          });
         }
         req.user = user.rows[0];
         return res.status(200).send({
           status: 'Success',
           message: 'Signed in sucessfully',
           data: user.rows[0]
-        }).catch(console.log(e=>(e)));
+        })
       })
     });
   }

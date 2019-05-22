@@ -4,11 +4,12 @@
   "description": "An online lending platform that provides short term soft loans to individuals.",
   "main": "index.js",
   "scripts": {
-    "test": "nyc --reporter=text mocha --timeout=50000 --require @babel/register --exit ./server/test/tests.js",
+    "test": "set env=test && npm run migration && nyc --reporter=text mocha --timeout=50000 --require @babel/register --exit ./server/test/**test.js",
     "dev-start": "set DEBUG=rest && nodemon --exec babel-node ./server/app.js",
     "build": "babel server --out-dir build",
     "start": "set DEBUG=rest && node build/app.js",
-    "nyc": "nyc report --reporter=text-lcov | coveralls"
+    "nyc": "nyc report --reporter=text-lcov | coveralls",
+    "migration": "babel-node ./server/models/migration createTables"
   },
   "repository": {
     "type": "git",
