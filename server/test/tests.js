@@ -1,7 +1,7 @@
 import chai, { expect } from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../app';
-import db from '../models/dbTest';
+import db from '../models/migration';
 
 db.createTables();
 
