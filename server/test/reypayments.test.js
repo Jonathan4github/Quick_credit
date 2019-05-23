@@ -10,7 +10,7 @@ const signupRoute = '/api/v1/auth/signup/';
 const signinRoute = '/api/v1/auth/signin/';
 let token;
 let wrongToken = 'absjesjsksksk';
-let loanData = {
+const loanData = {
   amount: 100000,
   tenor: 4
 }
