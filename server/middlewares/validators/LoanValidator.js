@@ -18,6 +18,10 @@ class LoanValidator {
     if (isNaN(tenor) || tenor < 1 || tenor > 12) {
       errorMessage.tenor = 'tenor should be number & not less than 1 or above 12';
     }
+
+    if (!(Object.keys(errorMessage).length === 0)) {
+      return res.status(400).json(errorMessage);
+    }
     const { status, id } = req.user.rows[0];
 
     if (status !== 'verified') {
@@ -29,24 +33,27 @@ class LoanValidator {
 
     const creatQuery = `SELECT * FROM loans WHERE userId = $1`;
     db.query(creatQuery, [id]).then(loan => {
-      if(loan.rows[0].status !== 'approve') {
+      if (loan.rows.length == 0) {
+        return next()
+      }
+      const { status, repaid } = loan.rows[0];
+      if (status !== 'approve') {
         return res.status(400).send({
           status: 'Failed',
-          error: `You loan application has not yet been approved`
-        })
+          error: `Your applied loan status is ${status}`
+        });
       }
-      if (loan.rows !== 0 && loan.rows[0].repaid == false) {
+      if (loan.rows.length !== 0 && repaid == false) {
         return res.status(400).send({
           status: 'Failed',
           error: `You cannot apply. You still have outstanding`
-        })
+        });
       }
+
+      next();
+
     }).catch(e => (e));
 
-    if (!(Object.keys(errorMessage).length === 0)) {
-      return res.status(400).json(errorMessage);
-    }
-    return next();
   }
 
   static validateQueryParams(req, res, next) {
@@ -86,7 +93,7 @@ class LoanValidator {
         status: 'Failed',
         error: 'status required & should be approve or reject'
       });
-    }    
+    }
     return next();
   }
 }

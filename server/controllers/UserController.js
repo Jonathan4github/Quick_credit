@@ -25,7 +25,7 @@ class UserController {
       }
       return res.status(200).json({
         status: 200,
-        data: 'User updated successfully',
+        data: 'User role updated successfully',
       });
     }).catch(e=>(e));
   }

@@ -14,37 +14,42 @@ class RepaymentsValidator {
     const createQuery = `SELECT * FROM loans WHERE id = $1`;
 
     db.query(createQuery, [id]).then(loan => {
-      const {balance, status} = loan.rows[0]
-
-      if(loan.rowCount == '0'){
+      if (loan.rowCount == '0') {
         return res.status(404).send({
-            status: 404,
-            error: 'Loan with the provided id does not exist'
+          status: 404,
+          error: 'Loan with the provided id does not exist'
         });
       }
-      if (balance == 0 || balance <= 0) {
-        return res.status(200).json({
-          status: 200,
+      const { balance, status } = loan.rows[0]
+      if (status !== 'approve') {
+        return res.status(422).send({
+          status: 422,
+          error: 'Loan with the provided id is still under pending'
+        });
+      }
+      if (balance == 0) {
+        return res.status(400).json({
+          status: 400,
           error: 'Loan with the provided id has been fully paid'
         });
       }
-    }).catch(e =>(e));
-    return next();
+     next();
+    }).catch(e => (e));
   }
 
-  static getRepaymentsValidator (req, res, next){
+  static getRepaymentsValidator(req, res, next) {
     const id = req.params.id;
     const createQuery = `SELECT * FROM loans WHERE id = $1`;
 
     db.query(createQuery, [id]).then(loan => {
-      if(loan.rowCount == '0'){
+      if (loan.rowCount == '0') {
         return res.status(404).send({
-            status: 404,
-            error: 'Loan with the provided id does not exist'
+          status: 404,
+          error: 'Loan with the provided id does not exist'
         });
       }
-    }).catch(e=>(e));
-    return next();
+      return next();
+    }).catch(e => (e));
   }
 }
 
