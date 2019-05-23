@@ -58,7 +58,7 @@ class RepaymentsContoller {
             })
           })
         })
-      }).ca
+      })
     }).catch((e) => e);
   }
 
