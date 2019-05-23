@@ -83,6 +83,9 @@ input[type=text], input[type=password]{
   width:55%;
   border: solid 1px #3260DA;
 }
+#fgtEmail{
+  width: 30%;
+}
 input[type=submit]{
   margin-top:20px;
   width:300px;
@@ -109,6 +112,10 @@ input[type=submit]{
 @media screen and (max-width: 660px) {
   input[type=text], input[type=password] {
     width: 75%;
+  }
+
+  #fgtEmail{
+    width: 55%;
   }
 
   input[type=submit]{

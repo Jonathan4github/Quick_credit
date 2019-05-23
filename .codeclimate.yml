@@ -23,4 +23,5 @@ exclude_patterns:
   - coverage
   - server/test/
   - client/
+  - models/migration
   

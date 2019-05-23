@@ -331,7 +331,24 @@ describe('Test case for sigin', () => {
         password: 'password'
       })
       .end((err, res) => {
+        token = token = res.body.data[0].token;
         res.should.have.status(200);
+        done();
+      });
+  });
+  it('should return 200 signin with token', done => {
+    chai.request(app).post('/api/v1/auth/signin/')
+      .set('x-access-token', token)
+      .end((err, res) => {
+        res.should.have.status(200);
+        done();
+      });
+  });
+  it('should return 401 signin with wrong token', done => {
+    chai.request(app).post('/api/v1/auth/signin/')
+      .set('x-access-token', wrongToken)
+      .end((err, res) => {
+        res.should.have.status(401);
         done();
       });
   });

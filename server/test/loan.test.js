@@ -65,7 +65,7 @@ describe('Test case for setting up user role', () => {
       })
       .end((err, res) => {
         res.should.have.status(200);
-        res.body.data.should.equal('User updated successfully');
+        res.body.data.should.equal('User role updated successfully');
         done();
       });
   });
