@@ -10,6 +10,10 @@ const signupRoute = '/api/v1/auth/signup/';
 const signinRoute = '/api/v1/auth/signin/';
 let token;
 let wrongToken = 'absjesjsksksk';
+let loanData = {
+  amount: 100000,
+  tenor: 4
+}
 
 describe('Test case for loan repayments', () => {
   it('should return 201 for valid credentials', (done) => {
@@ -33,10 +37,7 @@ describe('Test case for loan repayments', () => {
       .request(app)
       .post('/api/v1/loans')
       .set('x-access-token', token)
-      .send({
-        amount: 100000,
-        tenor: 4
-      })
+      .send(loanData)
       .end((err, res) => {
         res.should.have.status(400);
         res.body.error.should.equal("You are not yet verified");
@@ -68,10 +69,7 @@ describe('Test case for loan repayments', () => {
       .request(app)
       .post('/api/v1/loans')
       .set('x-access-token', token)
-      .send({
-        amount: 100000,
-        tenor: 4
-      })
+      .send(loanData)
       .end((err, res) => {
         res.should.have.status(200);
         done();
@@ -82,10 +80,7 @@ describe('Test case for loan repayments', () => {
       .request(app)
       .post('/api/v1/loans')
       .set('x-access-token', token)
-      .send({
-        amount: 100000,
-        tenor: 4
-      })
+      .send(loanData)
       .end((err, res) => {
         res.should.have.status(400);
         res.body.error.should.equal("Your applied loan status is pending");
@@ -134,10 +129,7 @@ describe('Test case for loan repayments', () => {
       .request(app)
       .post('/api/v1/loans')
       .set('x-access-token', token)
-      .send({
-        amount: 100000,
-        tenor: 4
-      })
+      .send(loanData)
       .end((err, res) => {
         res.should.have.status(400);
         res.body.error.should.equal("You cannot apply. You still have outstanding");
