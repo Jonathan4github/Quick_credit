@@ -7,3 +7,4 @@ middlewares
 client
 db.js
 server/config
+server/models

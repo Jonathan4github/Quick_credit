@@ -93,7 +93,7 @@ const createTables = () => {
     created_date TIMESTAMP,
     
     modified_date TIMESTAMP    
-  )`;
+  );`;
 
 
   db.query(query, (err) => {

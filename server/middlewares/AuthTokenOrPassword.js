@@ -13,7 +13,7 @@ class AuthTokenOrPassword {
         return res.status(401)
           .json({
             status: 'Failed',
-            error: 'Invalid user'
+            error: 'The credential you provided is invalid'
           })
       }
       const createQuery = `SELECT * FROM users WHERE id = ${decoded.userId}`;

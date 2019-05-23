@@ -155,7 +155,7 @@ describe('Test case for mark user as verified', () => {
       .set('x-access-token', wrongToken)
       .end((err, res) => {
         res.should.have.status(401);
-        res.body.error.should.equal('Invalid user');
+        res.body.error.should.equal('un-Authorized user');
         done();
       });
   });
