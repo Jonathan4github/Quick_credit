@@ -88,10 +88,10 @@ class LoanValidator {
 
   static loanStatus(req, res, next) {
     let { status } = req.body;
-    if (!((status == 'approve') || (status == 'reject'))) {
+    if (!((status == 'approved') || (status == 'reject'))) {
       return res.status(422).json({
         status: 'Failed',
-        error: 'status required & should be approve or reject'
+        error: 'status required & should be approved or reject'
       });
     }
     return next();
