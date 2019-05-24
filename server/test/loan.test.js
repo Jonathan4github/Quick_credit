@@ -351,7 +351,7 @@ describe('Test case for Get a specific loan application', () => {
       })
       .end((err, res) => {
         res.should.have.status(422);
-        res.body.error.should.equal('status required & should be approve or reject');
+        res.body.error.should.equal('status required & should be approved or reject');
         done();
       });
   });
@@ -361,7 +361,7 @@ describe('Test case for Get a specific loan application', () => {
       .patch('/api/v1/loans/1')
       .set('x-access-token', token)
       .send({
-        status: 'approve'
+        status: 'approved'
       })
       .end((err, res) => {
         res.should.have.status(200);

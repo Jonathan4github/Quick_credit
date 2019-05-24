@@ -37,7 +37,7 @@ class LoanValidator {
         return next()
       }
       const { status, repaid } = loan.rows[0];
-      if (status !== 'approve') {
+      if (status !== 'approved') {
         return res.status(400).send({
           status: 'Failed',
           error: `Your applied loan status is ${status}`

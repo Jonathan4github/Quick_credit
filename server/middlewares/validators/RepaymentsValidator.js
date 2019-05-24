@@ -21,10 +21,10 @@ class RepaymentsValidator {
         });
       }
       const { balance, status } = loan.rows[0]
-      if (status !== 'approve') {
+      if (status !== 'approved') {
         return res.status(422).send({
           status: 422,
-          error: 'Loan with the provided id is still under pending'
+          error: 'Loan with the provided id is not yet approved'
         });
       }
       if (balance == 0) {

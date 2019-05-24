@@ -94,7 +94,7 @@ describe('Test case for loan repayments', () => {
       .set('x-access-token', token)
       .end((err, res) => {
         res.should.have.status(422);
-        res.body.error.should.equal('Loan with the provided id is still under pending');
+        res.body.error.should.equal('Loan with the provided id is not yet approved');
 
         done();
       });
@@ -105,7 +105,7 @@ describe('Test case for loan repayments', () => {
       .patch('/api/v1/loans/2')
       .set('x-access-token', token)
       .send({
-        status: 'approve'
+        status: 'approved'
       })
       .end((err, res) => {
         res.should.have.status(200);
