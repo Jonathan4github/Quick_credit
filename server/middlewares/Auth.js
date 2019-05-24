@@ -17,7 +17,7 @@ const Auth = {
         return res.status(401)
           .json({
             status: 'Failed',
-            error: 'Invalid user'
+            error: 'un-Authorized user'
           })
       }
 
@@ -26,7 +26,7 @@ const Auth = {
         if (user.rowCount == 0) {
           return res.status(401).json({
             status: 'Failed',
-            error: 'The credential you provided is invalid'
+            error: 'un-Authorized user'
           })
         }
         req.user = user;

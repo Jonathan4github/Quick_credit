@@ -9,7 +9,8 @@
     "build": "babel server --out-dir build",
     "start": "set DEBUG=rest && node build/app.js",
     "nyc": "nyc report --reporter=text-lcov | coveralls",
-    "migration": "babel-node ./server/models/migration createTables"
+    "migration": "babel-node ./server/models/migration createTables",
+    "seedDatabase": "babel-node ./server/models/seed"
   },
   "repository": {
     "type": "git",
