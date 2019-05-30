@@ -20,8 +20,8 @@ describe('Test case for signup', () => {
           lastName: 'williams',
           email: 'jo@gmail.com',
           password: 'password',
-          work_address: 'No 12 Laogos Nigeria',
-          home_address: 'No 12 Laogos Nigeria',
+          workAddress: 'No 12 Laogos Nigeria',
+          homeAddress: 'No 12 Laogos Nigeria',
 
         })
         .end((err, res) => {
@@ -35,8 +35,8 @@ describe('Test case for signup', () => {
           lastName: 'Thomason',
           email: 'Philip@gmail.com',
           password: 'password',
-          work_address: 'No 12 Laogos Nigeria',
-          home_address: 'No 12 Laogos Nigeria',
+          workAddress: 'No 12 Laogos Nigeria',
+          homeAddress: 'No 12 Laogos Nigeria',
         })
         .end((err, res) => {
           res.should.have.status(201);
@@ -50,8 +50,8 @@ describe('Test case for signup', () => {
           lastName: 'williams',
           email: 'jo@gmail.com',
           password: 'password',
-          work_address: 'No 12 Laogos Nigeria',
-          home_address: 'No 12 Laogos Nigeria',
+          workAddress: 'No 12 Laogos Nigeria',
+          homeAddress: 'No 12 Laogos Nigeria',
         })
         .end((err, res) => {
           res.should.have.status(409);
@@ -72,8 +72,8 @@ describe('Test case for signup', () => {
       chai.request(app).post(signupRoute)
         .send({
           firstName: 'John',
-          work_address: 'No 12 Laogos Nigeria',
-          home_address: 'No 12 Laogos Nigeria',
+          workAddress: 'No 12 Laogos Nigeria',
+          homeAddress: 'No 12 Laogos Nigeria',
         })
         .end((err, res) => {
           res.should.have.status(422);
@@ -86,8 +86,8 @@ describe('Test case for signup', () => {
         .send({
           firstName: 'John',
           lastName: 'Sam',
-          work_address: 'No 12 Laogos Nigeria',
-          home_address: 'No 12 Laogos Nigeria',
+          workAddress: 'No 12 Laogos Nigeria',
+          homeAddress: 'No 12 Laogos Nigeria',
         })
         .end((err, res) => {
           res.should.have.status(422);
@@ -101,8 +101,8 @@ describe('Test case for signup', () => {
           firstName: 'John',
           lastName: 'Sam',
           email: 'john@gmail.com',
-          work_address: 'No 12 Laogos Nigeria',
-          home_address: 'No 12 Laogos Nigeria',
+          workAddress: 'No 12 Laogos Nigeria',
+          homeAddress: 'No 12 Laogos Nigeria',
         })
         .end((err, res) => {
           res.should.have.status(422);
@@ -117,8 +117,8 @@ describe('Test case for signup', () => {
           lastName: 'Sam',
           email: 'john@gmail.com',
           password: 'password',
-          work_address: 'No 12 Laogos Nigeria',
-          home_address: 'No 12 Laogos Nigeria',
+          workAddress: 'No 12 Laogos Nigeria',
+          homeAddress: 'No 12 Laogos Nigeria',
         })
         .end((err, res) => {
           res.should.have.status(422);
@@ -133,12 +133,12 @@ describe('Test case for signup', () => {
           lastName: 'Sam',
           email: 'john@gmail.com',
           password: 'password',
-          work_address: '',
-          home_address: 'No 12 Laogos Nigeria',
+          workAddress: '',
+          homeAddress: 'No 12 Laogos Nigeria',
         })
         .end((err, res) => {
           res.should.have.status(422);
-          res.body.work_address.should.equal('work address must not be less than 7 or above 30 characters');
+          res.body.workAddress.should.equal('work address must not be less than 7 or above 30 characters');
           done();
         });
     });
@@ -149,12 +149,12 @@ describe('Test case for signup', () => {
           lastName: 'Sam',
           email: 'john@gmail.com',
           password: 'password',
-          work_address: 'No 12 Laogos Nigeria',
-          home_address: '',
+          workAddress: 'No 12 Laogos Nigeria',
+          homeAddress: '',
         })
         .end((err, res) => {
           res.should.have.status(422);
-          res.body.home_address.should.equal('home address must not be less than 7 or above 30 characters');
+          res.body.homeAddress.should.equal('home address must not be less than 7 or above 30 characters');
           done();
         });
     });
@@ -165,8 +165,8 @@ describe('Test case for signup', () => {
           lastName: '',
           email: 'john@gmail.com',
           password: 'password',
-          work_address: 'No 12 Laogos Nigeria',
-          home_address: 'No 12 Laogos Nigeria',
+          workAddress: 'No 12 Laogos Nigeria',
+          homeAddress: 'No 12 Laogos Nigeria',
         })
         .end((err, res) => {
           res.should.have.status(422);
@@ -181,8 +181,8 @@ describe('Test case for signup', () => {
           lastName: '',
           email: '@gmail.com',
           password: 'password',
-          work_address: 'No 12 Laogos Nigeria',
-          home_address: 'No 12 Laogos Nigeria',
+          workAddress: 'No 12 Laogos Nigeria',
+          homeAddress: 'No 12 Laogos Nigeria',
         })
         .end((err, res) => {
           res.should.have.status(422);
@@ -197,8 +197,8 @@ describe('Test case for signup', () => {
           lastName: 'Williams',
           email: 'john@gmail.com',
           password: 'pas',
-          work_address: 'No 12 Laogos Nigeria',
-          home_address: 'No 12 Laogos Nigeria',
+          workAddress: 'No 12 Laogos Nigeria',
+          homeAddress: 'No 12 Laogos Nigeria',
         })
         .end((err, res) => {
           res.should.have.status(422);
@@ -213,8 +213,8 @@ describe('Test case for signup', () => {
           lastName: '',
           email: '',
           password: '',
-          work_address: 'No 12 Laogos Nigeria',
-          home_address: 'No 12 Laogos Nigeria',
+          workAddress: 'No 12 Laogos Nigeria',
+          homeAddress: 'No 12 Laogos Nigeria',
         })
         .end((err, res) => {
           res.should.have.status(422);
@@ -232,8 +232,8 @@ describe('Test case for signup', () => {
           lastName: 'Williams',
           email: 'gmail.com',
           password: 'password',
-          work_address: 'No 12 Laogos Nigeria',
-          home_address: 'No 12 Laogos Nigeria',
+          workAddress: 'No 12 Laogos Nigeria',
+          homeAddress: 'No 12 Laogos Nigeria',
         })
         .end((err, res) => {
           res.should.have.status(422);
@@ -248,8 +248,8 @@ describe('Test case for signup', () => {
           lastName: 'Williams',
           email: 'gmail.com',
           password: 'password',
-          work_address: 'No 12 Laogos Nigeria',
-          home_address: 'No 12 Laogos Nigeria',
+          workAddress: 'No 12 Laogos Nigeria',
+          homeAddress: 'No 12 Laogos Nigeria',
         })
         .end((err, res) => {
           res.should.have.status(422);
@@ -264,8 +264,8 @@ describe('Test case for signup', () => {
           lastName: 'Williams12',
           email: 'gmail.com',
           password: 'password',
-          work_address: 'No 12 Laogos Nigeria',
-          home_address: 'No 12 Laogos Nigeria',
+          workAddress: 'No 12 Laogos Nigeria',
+          homeAddress: 'No 12 Laogos Nigeria',
         })
         .end((err, res) => {
           res.should.have.status(422);

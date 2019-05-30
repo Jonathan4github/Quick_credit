@@ -42,11 +42,11 @@ class UserValidation {
       if (!validator.isLength(password, { min: 7, max: 20 })) {
         errorMessage.password = 'password must not be less than 7 or above 10 characters';
       }
-      if (!validator.isLength(work_address, { min: 7, max: 30 })) {
-        errorMessage.work_address = 'work address must not be less than 7 or above 30 characters';
+      if (!validator.isLength(workAddress, { min: 7, max: 30 })) {
+        errorMessage.workAddress = 'work address must not be less than 7 or above 30 characters';
       }
-      if (!validator.isLength(home_address, { min: 7, max: 30 })) {
-        errorMessage.home_address = 'home address must not be less than 7 or above 30 characters';
+      if (!validator.isLength(homeAddress, { min: 7, max: 30 })) {
+        errorMessage.homeAddress = 'home address must not be less than 7 or above 30 characters';
       }
 
       if (!(Object.keys(errorMessage).length === 0)) {

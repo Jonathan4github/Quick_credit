@@ -34,7 +34,7 @@ class RepaymentsContoller {
       const values = [loanId, paymentinstallment, moment(new Date()), moment(new Date())];
 
       db.query(createQuery, values).then(repayment => {
-        db.query(`SELECT SUM(amount) FROM repayments WHERE loanid=${loanId}`).then(paidSum => {
+        db.query(`SELECT SUM(amount) FROM repayments`).then(paidSum => {
           let paidAmount = paidSum.rows[0].sum;
           const balance = parseFloat(total_due) - parseFloat(paidAmount);
 

@@ -23,8 +23,8 @@ describe('Test case for loan repayments', () => {
         lastName: 'Williams',
         email: 'Alice@gmail.com',
         password: 'password',
-        work_address: 'No 12 Laogos Nigeria',
-        home_address: 'No 12 Laogos Nigeria',
+        workAddress: 'No 12 Laogos Nigeria',
+        homeAddress: 'No 12 Laogos Nigeria',
       })
       .end((err, res) => {
         token = res.body.data[0].token;
