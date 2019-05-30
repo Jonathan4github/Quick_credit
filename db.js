@@ -2,7 +2,7 @@ const { Pool } = require('pg');
 const dotenv = require('dotenv');
 const configuration = require('./server/config/config');
 
-const env = process.env.Node_ENV || 'test';
+const env = process.env.Node_ENV || 'development';
 const config = configuration[env];
 const connectionString = config.url;
 

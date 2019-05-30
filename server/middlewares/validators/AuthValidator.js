@@ -5,17 +5,17 @@ import db from '../../models/db';
 
 class UserValidation {
   static Signup(req, res, next) {
-    const { firstName, lastName, email, password, work_address, home_address } = req.body,
+    const { firstName, lastName, email, password, workAddress, homeAddress } = req.body,
       errorMessage = {};
 
     if (firstName === undefined || lastName === undefined || email === undefined || password === undefined
-    || work_address === undefined || home_address === undefined) {
+      || workAddress === undefined || homeAddress === undefined) {
       return res.status(422).json({
         status: 'Failed',
         error: 'All or some of the field is/are undefined'
       });
     }
-    
+
     db.query(`SELECT id FROM users WHERE email = '${email}'`).then(userfound => {
       if (userfound.rows.length > 0) {
         return res.status(409).json({

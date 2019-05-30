@@ -14,12 +14,12 @@ class AuthController {
    * @return {obj} return json object user.
    */
   static signup(req, res) {
-    const { firstName, lastName, email, password, work_address, home_address } = req.body;
+    const { firstName, lastName, email, password, workAddress, homeAddress } = req.body;
     const hashPassword = Helper.hashPassword(password);
 
     const createQuery =
       'INSERT INTO users (firstName, lastName, email, password, work_address, home_address, created_date, modified_date)  VALUES($1, $2, $3, $4, $5, $6, $7, $8) returning *';
-    const values = [firstName, lastName, email, hashPassword, work_address, home_address, moment(new Date()), moment(new Date())];
+    const values = [firstName, lastName, email, hashPassword, workAddress, homeAddress, moment(new Date()), moment(new Date())];
 
     db.query(createQuery, values).then(user => {
       const token = Helper.generateToken(user.rows[0].id);
