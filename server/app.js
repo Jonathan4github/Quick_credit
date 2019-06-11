@@ -1,6 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import Debug from 'debug';
+import cors from 'cors';
 import authRoutes from './routes/auth/router';
 import userRoutes from './routes/user/router';
 import loanRoutes from './routes/loan/router';
@@ -8,6 +9,8 @@ import repaymentRoutes from './routes/repayments/router';
 
 const app = express();
 const debug = Debug('rest');
+app.use(cors());
+
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

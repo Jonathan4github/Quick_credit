@@ -105,13 +105,22 @@ input[type=submit]{
   color:#000;
   border-radius: 5px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  height: 65%;
-  
+  height: 65%;  
+}
+
+#error-info{
+  color:rgb(248, 64, 64);
+  font-size: 13px;
+  display: none;  
 }
 
 @media screen and (max-width: 660px) {
   input[type=text], input[type=password] {
     width: 75%;
+  }
+
+  .card{
+    width: 95%;
   }
 
   #fgtEmail{
