@@ -24,10 +24,6 @@ const signin = (event) => {
         } else {
           window.location.replace('./dashboard.html');
         }
-        // window.localStorage.setItem('message', 'Successfully logged in')
-        // window.localStorage.setItem('token', data.token);
-        // // window.localStorage.setItem('fullname', data.data.fullname);
-        // window.localStorage.setItem('image', data.data.image);
       } else if (status == 401 || status == 422) {
         document.getElementById('error-info').style.display = 'block';
         document.getElementById('error-msg').innerHTML = 'Wrong credential. Try again or click Forgot password to reset it';
