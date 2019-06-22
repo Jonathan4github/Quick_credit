@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
-<body>
+<body onload="getAllClients()">
   <div class="nav">
     <div class="top-side">
       <i class="fa fa-bars menu-bar-icon" onclick="openNav()"></i>
@@ -55,42 +55,17 @@
                 <th>Email</th>
                 <th>Status</th>
               </tr>
-              <tr onclick="location.href='client_detail.html';">
-                <td>1-16-2019</td>
-                <td>Jonathan Williams</td>
-                <td>williams505@gmail.com</td>
-                <td>
-                  <i class="fa fa-circle fa-margin text-green"></i>verified</td>
-              </tr>
-              <tr onclick="location.href='client_detail.html';">
-                <td>1-16-2019</td>
-                <td>Panel Williams</td>
-                <td>panel@gmail.com</td>
-                <td>
-                  <i class="fa fa-circle fa-margin text-green"></i>verified</td>
-              </tr>
-              <tr onclick="location.href='client_detail.html';">
-                <td>1-16-2019</td>
-                <td>Victory Adams</td>
-                <td>adams@gmail.com</td>
-                <td>
-                  <i class="fa fa-circle fa-margin text-red"></i>not verified</td>
-              </tr>
-              <tr onclick="location.href='client_detail.html';">
-                <td>1-16-2019</td>
-                <td>Faith Adams</td>
-                <td>faith@gmail.com</td>
-                <td>
-                  <i class="fa fa-circle fa-margin text-green"></i>verified</td>
-              </tr>
-            </table>
+              <tbody id="clientsData">
 
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
     </div>
   </main>
   <script type="text/javascript" src="../public/js/sidebar.js"></script>
+  <script type="text/javascript" src="../public/js/clients.js"></script>
 </body>
 
 </html>
