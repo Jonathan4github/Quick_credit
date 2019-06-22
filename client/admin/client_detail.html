@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
-<body>
+<body onload="getClient()">
   <div class="nav">
     <div class="top-side">
       <i class="fa fa-bars menu-bar-icon" onclick="openNav()"></i>
@@ -56,27 +56,27 @@
           </div>
           <div class="input-container">
             <i class="fa fa-user icon"></i>
-            <input class="input-field" type="text" value="Jonathan" placeholder="First name" disabled>
+            <input class="input-field" type="text" id="firstname" placeholder="First name" disabled>
           </div>
           <div class="input-container">
             <i class="fa fa-user icon"></i>
-            <input class="input-field" type="text" value="Williams" placeholder="Last name" disabled>
+            <input class="input-field" type="text" id="lastname" placeholder="Last name" disabled>
           </div>
           <div class="input-container">
             <i class="fa fa-envelope icon"></i>
-            <input class="input-field" type="text" value="jonathanwilliams505@gmail.com" placeholder="Email" disabled>
+            <input class="input-field" type="text" id="email" placeholder="Email" disabled>
           </div>
           <div class="input-container">
             <i class="fa fa-home icon"></i>
-            <input class="input-field" type="text" value="No. 2 Ikorodu Lagos Nigeria" placeholder="Home address" disabled>
+            <input class="input-field" type="text" id="homeAddress" placeholder="Home address" disabled>
           </div>
           <div class="input-container">
             <i class="fa fa-briefcase icon"></i>
-            <input class="input-field" type="text" value="No. 23 Lekki Lagos Nigeria" placeholder="Work address" disabled>
+            <input class="input-field" type="text" id="workAddress" placeholder="Work address" disabled>
           </div>
           <div class="input-container">
             <i class="fa fa-user icon"></i>
-            <input class="input-field" type="text" value="User" placeholder="Work address" disabled>
+            <input class="input-field" type="text" id="role" placeholder="Work address" disabled>
           </div>
           <input type="submit" value="Verify" class="btn">
         </form>
@@ -85,6 +85,7 @@
   </main>
   <!--JavaScript at end of body for optimized loading-->
   <script type="text/javascript" src="../public/js/sidebar.js"></script>
+  <script type="text/javascript" src="../public/js/client.js"></script>
 </body>
 
 </html>

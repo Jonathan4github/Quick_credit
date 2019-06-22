@@ -8,7 +8,7 @@ import isAdmin from '../../middlewares/isAdmin';
 const router = express.Router();
 
 const { roleValidation, verifyValidation } = UserValidator;
-const { role, markVerified, getAll } = UserController;
+const { role, markVerified, getAll, findOne } = UserController;
 const { verifyToken } = Auth;
 
 router.route('/users/role/')
@@ -17,5 +17,7 @@ router.route('/users/:email/verify')
   .patch(verifyToken, isAdmin, verifyValidation, markVerified);
 router.route('/users/')
   .get(verifyToken, isAdmin, getAll);
+router.route('/users/:id')
+  .get(verifyToken, isAdmin, findOne);
 
 export default router;

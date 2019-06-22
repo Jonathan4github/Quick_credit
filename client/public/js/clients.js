@@ -18,7 +18,7 @@ const getAllClients = () => {
       const clients = data.data;
       clients.map((client) => {
         document.getElementById('clientsData').innerHTML += `
-        <tr>
+        <tr onclick="getClient(this.id)" id=${client.id}>
         <td>${client.created_date}</td>
         <td>${client.firstname} ${client.lastname}</td>
         <td>${client.email}</td>
@@ -30,5 +30,9 @@ const getAllClients = () => {
 };
 
 const getClient = (id) => {
-
+  console.log(id);
+  if (id) {
+    window.localStorage.setItem('clientId', id);
+    window.location.href = './client_detail.html';
+  }
 };
