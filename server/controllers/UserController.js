@@ -48,14 +48,26 @@ class UserController {
   }
 
   static getAll(req, res) {
-    const createQuery = `Select * from users`;
+    const createQuery = `SELECT * FROM users`;
     db.query(createQuery).then(clients => {
       return res.status(200).send({
-        status: 'Sucess',
+        status: 'Success',
         message: 'Clients retrieve successfully',
         data: clients.rows
       });
     })
+  }
+
+  static findOne(req, res){
+    const clientId = req.params.id;
+    const createQuery = `SELECT * FROM users WHERE id = ${clientId}`;
+    db.query(createQuery).then(client =>{
+      return res.status(200).send({
+        status: 'Success',
+        message: 'Client retrieve successfully',
+        data: client.rows
+      });
+    });
   }
 }
 
