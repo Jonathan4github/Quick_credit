@@ -18,9 +18,12 @@ const signin = (event) => {
     .then(data => {
       const { message, status } = data;
       if (message === 'Signed in sucessfully') {
-        const { isadmin } = data.data[0].user;
+        const { isadmin, firstName } = data.data[0].user;
+        const { token } = data.data[0];
         if (isadmin == true) {
           window.location.replace('./admin/dashboard.html');
+          window.localStorage.setItem('token', token);
+          window.localStorage.setItem('firstName', firstName);
         } else {
           window.location.replace('./dashboard.html');
         }

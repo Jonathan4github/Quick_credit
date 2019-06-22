@@ -27,7 +27,7 @@ class UserController {
         status: 200,
         data: 'User role updated successfully',
       });
-    }).catch(e=>(e));
+    }).catch(e => (e));
   }
 
   static markVerified(req, res) {
@@ -44,7 +44,18 @@ class UserController {
           data: user.rows[0]
         });
       });
-    }).then(e=>(e));
+    }).then(e => (e));
+  }
+
+  static getAll(req, res) {
+    const createQuery = `Select * from users`;
+    db.query(createQuery).then(clients => {
+      return res.status(200).send({
+        status: 'Sucess',
+        message: 'Clients retrieve successfully',
+        data: clients.rows
+      });
+    })
   }
 }
 
