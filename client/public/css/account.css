@@ -215,14 +215,16 @@ input[type='file'] {
   display: none;
 }
 
-.upload-btn {
+#verified-status {
+  cursor:default;
   border: 1px solid #4285f4;
   color: #4285f4;
   background-color: transparent;
   padding: 5px 15px;
   font-size: 15px;
-  cursor: pointer;
+  display: none;
 }
+
 .hide-btn {
   margin: 20px 0 20px 0;
 }
