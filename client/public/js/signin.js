@@ -5,6 +5,12 @@ const signin = (event) => {
     password: document.getElementById('password').value
   };
 
+  $.Toast.showToast({
+    "title": "Logging in ...",
+    "icon": "loading",
+    "duration": 16000
+  });
+
   const params = {
     method: 'POST',
     headers: {
@@ -28,6 +34,7 @@ const signin = (event) => {
           window.location.replace('./dashboard.html');
         }
       } else if (status == 401 || status == 422) {
+        $.Toast.hideToast();
         document.getElementById('error-info').style.display = 'block';
         document.getElementById('error-msg').innerHTML = 'Wrong credential. Try again or click Forgot password to reset it';
         document.getElementById('email').style.borderColor = 'rgb(248, 64, 64)';

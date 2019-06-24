@@ -7,6 +7,7 @@
   <link rel="Quick Credit icon" href="../public/img/icon.png" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
 </head>
 
 <body onload="getClient()">
@@ -21,7 +22,7 @@
   <div id="mySidenav" class="sidenav">
     <span class="closebtn" onclick="closeNav()">&times;</span>
     <div class="sidenav-image">
-      <img src="https://via.placeholder.com/150" />
+      <img src="https://via.placeholder.com/150" id="avater" />
       <p>Jonathan</p>
     </div>
     <a href="dashboard.html">
@@ -47,8 +48,8 @@
               <p>
                 <form id="update-image">
 
-                  <label class="upload-btn">
-                    <i class="fa fa-circle fa-margin text-red"></i> Not Veried
+                  <label id="verified-status">
+                    Not Veried
                   </label>
                 </form>
               </p>
@@ -78,14 +79,17 @@
             <i class="fa fa-user icon"></i>
             <input class="input-field" type="text" id="role" placeholder="Work address" disabled>
           </div>
-          <input type="submit" value="Verify" class="btn">
+          <button class="btn" onclick="markUserAsVerified()" id="verify-btn" disabled>Verify</button>
         </form>
       </div>
     </div>
   </main>
+
   <!--JavaScript at end of body for optimized loading-->
+  <script src="../public/js/jquery.js"></script>
   <script type="text/javascript" src="../public/js/sidebar.js"></script>
   <script type="text/javascript" src="../public/js/client.js"></script>
+  <script src="../public/js/jquery.toast.js"></script>
 </body>
 
 </html>

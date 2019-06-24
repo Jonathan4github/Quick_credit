@@ -8,7 +8,9 @@ import isAdmin from '../../middlewares/isAdmin';
 const router = express.Router();
 
 const { roleValidation, verifyValidation } = UserValidator;
-const { role, markVerified, getAll, findOne } = UserController;
+const {
+  role, markVerified, getAll, findOne
+} = UserController;
 const { verifyToken } = Auth;
 
 router.route('/users/role/')
