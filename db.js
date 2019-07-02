@@ -68,6 +68,8 @@ const createTables = () => {
 
     amount NUMERIC NOT NULL,
 
+    purpose VARCHAR(150),
+
     interest NUMERIC NOT NULL,
 
     paymentInstallment NUMERIC NOT NULL,

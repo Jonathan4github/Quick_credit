@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
-<body onload="getAllloansApplication()">
+<body onload="getAllClients()">
   <div class="nav">
     <div class="top-side">
       <i class="fa fa-bars menu-bar-icon" onclick="openNav()"></i>
@@ -36,6 +36,7 @@
       <i class="fa fa-history fa-margin"></i> Repayment history</a>
     <a href="../index.html">
       <i class="fa fa-sign-out fa-margin"></i> Logout</a>
+
   </div>
   <main id="main">
     <div class="section">
@@ -43,21 +44,20 @@
         <div class="card">
           <div class="card-title">
             <h2>
-              Loan Applications
+              List of Clients
             </h2>
           </div>
           <div class="card-content">
             <table>
               <tr>
-                <th>Date</th>
-                <th>Loan Id</th>
-                <th>Amount</th>
-                <th>Aprove</th>
+                <th>Registered Date</th>
+                <th>Fullname</th>
+                <th>Email</th>
+                <th>Status</th>
               </tr>
-              <tbody id="applicationsData">
+              <tbody id="clientsData">
 
               </tbody>
-
             </table>
           </div>
         </div>
@@ -66,7 +66,7 @@
   </main>
   <script src="../public/js/jquery.js"></script>
   <script type="text/javascript" src="../public/js/sidebar.js"></script>
-  <script type="text/javascript" src="../public/js/getAllLoans.js"></script>
+  <script type="text/javascript" src="../public/js/clients.js"></script>
   <script src="../public/js/jquery.toast.js"></script>
 </body>
 

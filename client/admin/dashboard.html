@@ -1,77 +1,105 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <title>Quick Credit</title>
-  <link type="text/css" rel="stylesheet" href="../public/css/dashboard.css" media="screen,projection" />
-  <link rel="Quick Credit icon" href="../public/img/icon.png" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Quick Credit</title>
+  <link rel="stylesheet" href="../public/css/sidebarDemo.css" type="text/css" />
+  <link rel="Quick Credit icon" href="../public/img/icon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
-  <div class="nav">
-    <div class="top-side">
-      <i class="fa fa-bars menu-bar-icon" onclick="openNav()"></i>
-      <a id="logo">
-        <i class="fa fa-leaf"></i> Quick Credit
+  <!-- Vertical sidebar -->
+  <div class="sidebar_menu" id="mySidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <center>
+      <a href="index.html">
+        <h1 class="boxed_item">
+          <span class="logo_bold">QCredit</span>
+        </h1>
       </a>
-    </div>
-  </div>
-  <div id="mySidenav" class="sidenav">
-    <span class="closebtn" onclick="closeNav()">&times;</span>
-    <div class="sidenav-image">
-      <img src="https://via.placeholder.com/150" />
-      <p>Jonathan</p>
-    </div>
-    <a href="dashboard.html">
-      <i class="fa fa-dashboard fa-margin"></i> Dashboard</a>
-    <a href="clients.html">
-      <i class="fa fa-users fa-margin"></i> Clients</a>
-    <a href="loan_applications.html">
-      <i class="fa fa-pencil fa-margin"></i> Loan applications</a>
-    <a href="post_repayment.html">
-      <i class="fa fa-edit fa-margin"></i> Post repayment</a>
-    <a href="repayment_history.html">
-      <i class="fa fa-history fa-margin"></i> Repayment history</a>
-    <a href="../index.html">
-      <i class="fa fa-sign-out fa-margin"></i> Logout</a>
+      <h2 class="logo_title">Quick Credit Quick Cash</h2>
+    </center>
 
+    <ul class="navigation_section">
+      <a href="dashboard.html">
+        <li class="navigation_item">
+          <i class="fa fa-dashboard navigation_item-i"></i>Dashboard</li>
+      </a>
+      <a href="clients.html">
+        <li class="navigation_item">
+          <i class="fa fa-users navigation_item-i"></i>Clients</li>
+      </a>
+      <a href="loan_applications.html">
+        <li class="navigation_item">
+          <i class="fa fa-pencil navigation_item-i"></i>Loan applications</li>
+      </a>
+      <a href="post_repayment.html">
+        <li class="navigation_item">
+          <i class="fa fa-edit navigation_item-i"></i>Post repayment</li>
+      </a>
+      <a href="repayment_history.html">
+        <li class="navigation_item">
+          <i class="fa fa-history navigation_item-i"></i>Repayment history</li>
+      </a>
+      <a href="account.html">
+        <li class="navigation_item">
+          <i class="fa fa-user navigation_item-i"></i>Account</li>
+      </a>
+      <li>
+        <button class="icon-btn" id="logout">
+          <h1 class="boxed_item boxed_item_smaller signup">
+            <i class="fa fa-user"></i> LOGOUT</h1>
+        </button>
+      </li>
+    </ul>
   </div>
-  <main id="main">
-    <div class="section">
-      <div class="row">
-        <div class="card">
-          <div class="card-title">
-            Total No. of Clients
-          </div>
-          <div class="card-content text-blue">
-            0
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-title">
-            Total No. of outstanding Loan
-          </div>
-          <div class="card-content text-red">
-            1
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-title">
-            Total No. of paid Loan
-          </div>
-          <div class="card-content text-green">
-            2
-          </div>
-        </div>
-
+  <main>
+    <section class="container" id="container">
+      <div class="mobile-nav">
+        <span class="mobile_menu_icon" onclick="openNav()">&#9776;</span>
       </div>
-    </div>
+      <nav class="top-menu" id="total-entries">Dashboard</nav>
+      <h3 id="entry-table-heading">Diary Entries</h3>
 
+      <div class="section">
+        <div class="row">
+          <div class="card">
+            <div class="card-title">
+              Total No. of Clients
+            </div>
+            <div class="card-content text-blue">
+              0
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title">
+              Total No. of outstanding Loan
+            </div>
+            <div class="card-content text-red">
+              1
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title">
+              Total No. of paid Loan
+            </div>
+            <div class="card-content text-green">
+              2
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
   </main>
-  <!--JavaScript at end of body for optimized loading-->
-  <script type="text/javascript" src="../public/js/sidebar.js"></script>
 </body>
 
 </html>
+
+<!-- Jquery library -->
+<script src="../public/js/jquery.js"></script>
+<script src="../public/js/quickCredit.js"></script>
