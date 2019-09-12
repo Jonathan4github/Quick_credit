@@ -18,16 +18,16 @@ const Auth = {
           .json({
             status: 'Failed',
             error: 'un-Authorized user'
-          })
+          });
       }
 
       const createQuery = `SELECT * FROM users WHERE id = ${decoded.userId}`;
       db.query(createQuery, (error, user) => {
-        if (user.rowCount == 0) {
+        if (user.rowCount === 0) {
           return res.status(401).json({
             status: 'Failed',
             error: 'un-Authorized user'
-          })
+          });
         }
         req.user = user;
         next();

@@ -35,19 +35,13 @@ const getClient = () => {
       document.getElementById('homeAddress').value = home_address;
       document.getElementById('workAddress').value = work_address;
       document.getElementById('avater').src = image;
-      document.getElementById('verified-status').innerHTML = status;
+      document.getElementById('status').innerHTML = status;
       window.localStorage.setItem('email', email);
 
+
       let role = document.getElementById('role');
-
       isadmin === true ? role.value = 'Admin' : role.value = 'User';
-
-      if (status == 'verified') {
-        const verifyBtn = document.getElementById('verify-btn');
-        verifyBtn.innerHTML = '&#10004; verified';
-        verifyBtn.style.color = 'green';
-      }
-
+      status === 'verified'? document.getElementById('verified-btn').innerHTML = '': null;
     });
 };
 

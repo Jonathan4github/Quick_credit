@@ -12,6 +12,10 @@ body {
   width: 43px;
 }
 
+.logo-header{
+  text-align: center;
+}
+
 .sidebar_menu {
   position: fixed;
   width: 250px;
@@ -185,7 +189,7 @@ textarea:focus {
 
 /* Style the submit button with a specific background color etc */
 input[type='submit'],
-.cancel-btn {
+.cancel-btn, .btn {
   background-color: #ffaf30;
   color: #000;
   padding: 12px 20px;
@@ -193,8 +197,13 @@ input[type='submit'],
   cursor: pointer;
 }
 
+#btn-container{
+  margin-left:15px;
+  margin-top: 20px;
+}
+
 /* When moving the mouse over the submit button, add a darker green color */
-input[type='submit']:hover {
+input[type='submit']:hover, button:hover {
   background-color: #4285f4;
 }
 
@@ -247,7 +256,7 @@ input[type='file'] {
 .card{
   width:30%;
   background-color:#fff;
-  height:200px;
+  height:250px;
   padding:20px;
   text-align: center;
   color:#000;
@@ -278,6 +287,10 @@ input[type='file'] {
 
 .text-blue {
   color:#3260DA;
+}
+
+.white {
+  color:#fff;
 }
 
 
@@ -344,8 +357,8 @@ table {
 .tbl-header {
   background-color: #f1f1f1;
 }
+
 .tbl-content {
-  height: 300px;
   overflow-x: auto;
   margin-top: 0px;
   border: 1px solid rgba(233, 231, 231, 0.3);

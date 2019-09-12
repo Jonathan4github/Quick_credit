@@ -21,16 +21,16 @@ const getAllloansApplication = () => {
     .then(res => res.json())
     .then((data) => {
       if (data.status == 'Success') {
+        $.Toast.hideToast();
         const applications = data.data;
-        console.log(applications);
         applications.map(application => {
-          const { created_date, id, status } = application;
+          const { created_date, userid, id, status } = application;
           let amount = parseFloat(application.amount).toFixed(2);
 
           document.getElementById('applicationsData').innerHTML += `
-          <tr>
+          <tr onclick="getLoanId(id)" id=${id}>
           <td>${created_date}</td>
-          <td>${id}</td>
+          <td>${userid}</td>
           <td>${amount}</td>
           <td>${status}</td>
           </tr>          
@@ -40,9 +40,9 @@ const getAllloansApplication = () => {
     });
 };
 
-const getClient = (id) => {
+const getLoanId = (id) => {
   if (id) {
-    window.localStorage.setItem('clientId', id);
-    window.location.href = './client_detail.html';
+    window.localStorage.setItem('applicationId', id);
+    window.location.href = './loan_application_detail.html';
   }
 };

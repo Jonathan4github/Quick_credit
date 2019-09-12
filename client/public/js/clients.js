@@ -26,6 +26,7 @@ const getAllClients = () => {
         document.getElementById('clientsData').innerHTML += `
         <tr onclick="getClient(id)" id=${client.id}>
         <td>${client.created_date}</td>
+        <td>${client.id}</td>
         <td>${client.firstname} ${client.lastname}</td>
         <td>${client.email}</td>
         <td>${client.status}</td>
