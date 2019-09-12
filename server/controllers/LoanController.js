@@ -29,7 +29,7 @@ class LoanController {
   }
 
   static getUserLoan(req, res) {
-    const userId = req.user.rows[0].id;;
+    const userId = req.user.rows[0].id;
     const createQuery = `SELECT * FROM loans WHERE userId = $1`;
 
     db.query(createQuery, [userId]).then(loan =>{
@@ -45,7 +45,7 @@ class LoanController {
         message: 'Loan retrieved successfully',
         data: loan.rows
       });
-    }).catch(e => (e));
+    }).catch(e => (e.message));
   }
 
   static loanApplication(req, res) {
