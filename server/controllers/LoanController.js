@@ -28,6 +28,26 @@ class LoanController {
     }).catch(e => (e));
   }
 
+  static getUserLoan(req, res) {
+    const userId = req.user.rows[0].id;
+    const createQuery = `SELECT * FROM loans WHERE userId = $1`;
+
+    db.query(createQuery, [userId]).then(loan =>{
+
+      if (loan.rowCount === 0) {
+        return res.status(404).send({
+          status: 'Failed',
+          error: 'Loan with the given id not found'
+        });
+      }
+      return res.status(200).send({
+        status: 'Success',
+        message: 'Loan retrieved successfully',
+        data: loan.rows
+      });
+    }).catch(e => (e.message));
+  }
+
   static loanApplication(req, res) {
     const { tenor, amount } = req.body;
     const interest = (parseFloat(amount) * 5) / 100;

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Quick Credit</title>
+  <link type="text/css" rel="stylesheet" href="../public/css/table.css" media="screen,projection" />
+  <link rel="Quick Credit icon" href="../public/img/icon.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body onload="getAllClients()">
+  <div class="nav">
+    <div class="top-side">
+      <i class="fa fa-bars menu-bar-icon" onclick="openNav()"></i>
+      <a id="logo">
+        <i class="fa fa-leaf"></i> Quick Credit
+      </a>
+    </div>
+  </div>
+  <div id="mySidenav" class="sidenav">
+    <span class="closebtn" onclick="closeNav()">&times;</span>
+    <div class="sidenav-image">
+      <img src="https://via.placeholder.com/150" />
+      <p>Jonathan</p>
+    </div>
+    <a href="dashboard.html">
+      <i class="fa fa-dashboard fa-margin"></i> Dashboard</a>
+    <a href="clients.html">
+      <i class="fa fa-users fa-margin"></i> Clients</a>
+    <a href="loan_applications.html">
+      <i class="fa fa-pencil fa-margin"></i> Loan applications</a>
+    <a href="post_repayment.html">
+      <i class="fa fa-edit fa-margin"></i> Post repayment</a>
+    <a href="repayment_history.html">
+      <i class="fa fa-history fa-margin"></i> Repayment history</a>
+    <a href="../index.html">
+      <i class="fa fa-sign-out fa-margin"></i> Logout</a>
+
+  </div>
+  <main id="main">
+    <div class="section">
+      <div class="row">
+        <div class="card">
+          <div class="card-title">
+            <h2>
+              List of Clients
+            </h2>
+          </div>
+          <div class="card-content">
+            <table>
+              <tr>
+                <th>Registered Date</th>
+                <th>Fullname</th>
+                <th>Email</th>
+                <th>Status</th>
+              </tr>
+              <tbody id="clientsData">
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script src="../public/js/jquery.js"></script>
+  <script type="text/javascript" src="../public/js/sidebar.js"></script>
+  <script type="text/javascript" src="../public/js/clients.js"></script>
+  <script src="../public/js/jquery.toast.js"></script>
+</body>
+
+</html>

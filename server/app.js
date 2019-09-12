@@ -9,7 +9,7 @@ import repaymentRoutes from './routes/repayments/router';
 
 const app = express();
 const debug = Debug('rest');
-app.use(cors());
+app.use(cors('*'));
 
 
 app.use(bodyParser.json());

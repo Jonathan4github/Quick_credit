@@ -1,94 +1,94 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <title>Quick Credit</title>
-  <link type="text/css" rel="stylesheet" href="../public/css/table.css" media="screen,projection" />
-  <link rel="Quick Credit icon" href="../public/img/icon.png" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="../public/css/sidebarDemo.css" type="text/css" />
+  <link rel="Quick Credit icon" href="../public/img/icon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
-<body>
-  <div class="nav">
-    <div class="top-side">
-      <i class="fa fa-bars menu-bar-icon" onclick="openNav()"></i>
-      <a id="logo">
-        <i class="fa fa-leaf"></i> Quick Credit
+<body onload="getAllloansApplication()">
+  <!-- Vertical sidebar -->
+  <div class="sidebar_menu" id="mySidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <div class="logo-header">
+      <a href="index.html">
+        <h1 class="boxed_item">
+          <span class="logo_bold">QCredit</span>
+        </h1>
       </a>
+      <h2 class="logo_title">Quick Credit Quick Cash</h2>
     </div>
+
+    <ul class="navigation_section">
+      <a href="dashboard.html">
+        <li class="navigation_item">
+          <i class="fa fa-dashboard navigation_item-i"></i>Dashboard</li>
+      </a>
+      <a href="clients.html">
+        <li class="navigation_item">
+          <i class="fa fa-users navigation_item-i"></i>Clients</li>
+      </a>
+      <a href="loan_applications.html">
+        <li class="navigation_item">
+          <i class="fa fa-pencil navigation_item-i"></i>Loan applications</li>
+      </a>
+      <a href="post_repayment.html">
+        <li class="navigation_item">
+          <i class="fa fa-edit navigation_item-i"></i>Post repayment</li>
+      </a>
+      <a href="repayment_history.html">
+        <li class="navigation_item">
+          <i class="fa fa-history navigation_item-i"></i>Repayment history</li>
+      </a>
+      <a href="account.html">
+        <li class="navigation_item">
+          <i class="fa fa-user navigation_item-i"></i>Account</li>
+      </a>
+      <li>
+        <button class="icon-btn" id="logout">
+          <h1 class="boxed_item boxed_item_smaller signup">
+            <i class="fa fa-user"></i> LOGOUT</h1>
+        </button>
+      </li>
+    </ul>
   </div>
-  <div id="mySidenav" class="sidenav">
-    <span class="closebtn" onclick="closeNav()">&times;</span>
-    <div class="sidenav-image">
-      <img src="https://via.placeholder.com/150" />
-      <p>Jonathan</p>
-    </div>
-    <a href="dashboard.html">
-      <i class="fa fa-dashboard fa-margin"></i> Dashboard</a>
-    <a href="clients.html">
-      <i class="fa fa-users fa-margin"></i> Clients</a>
-    <a href="loan_applications.html">
-      <i class="fa fa-pencil fa-margin"></i> Loan applications</a>
-    <a href="post_repayment.html">
-      <i class="fa fa-edit fa-margin"></i> Post repayment</a>
-    <a href="repayment_history.html">
-      <i class="fa fa-history fa-margin"></i> Repayment history</a>
-    <a href="../index.html">
-      <i class="fa fa-sign-out fa-margin"></i> Logout</a>
-  </div>
-  <main id="main">
-    <div class="section">
-      <div class="row">
-        <div class="card">
-          <div class="card-title">
-            <h2>
-              Loan Applications
-            </h2>
-          </div>
-          <div class="card-content">
-            <table>
-              <tr>
-                <th>Date</th>
-                <th>Fullname</th>
-                <th>Amount</th>
-                <th>Aprove</th>
-              </tr>
-              <tr onclick="location.href='loan_application_detail.html';">
-                <td>1-16-2019</td>
-                <td>Jonathan Williams</td>
-                <td>&#8358; 158,000</td>
-                <td>
-                  <i class="fa fa-circle fa-margin text-orange"></i>In progress</td>
-              </tr>
-              <tr onclick="location.href='loan_application_detail.html';">
-                <td>1-16-2019</td>
-                <td>Adams Paul</td>
-                <td>&#8358; 158,000</td>
-                <td>
-                  <i class="fa fa-circle fa-margin text-green"></i>Approved</td>
-              </tr>
-              <tr onclick="location.href='loan_application_detail.html';">
-                <td>1-16-2019</td>
-                <td>Faith John</td>
-                <td>&#8358; 208,000</td>
-                <td>
-                  <i class="fa fa-circle fa-margin text-red"></i>Reject</td>
-              </tr>
-              <tr onclick="location.href='loan_application_detail.html';">
-                <td>1-19-2019</td>
-                <td>Abdu Alibaba</td>
-                <td>&#8358; 5,000</td>
-                <td>
-                  <i class="fa fa-circle fa-margin text-green"></i>Approved</td>
-              </tr>
-            </table>
-          </div>
-        </div>
+  <main>
+    <section class="container" id="container">
+      <div class="mobile-nav">
+        <span class="mobile_menu_icon" onclick="openNav()">&#9776;</span>
       </div>
-    </div>
+      <nav class="top-menu" id="total-entries">Total applications: 0</nav>
+      <div class="tbl-header">
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Client Id</th>
+              <th>&#8358; Amount</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+
+      <div class="tbl-content">
+        <table id="clients">
+          <tbody id="applicationsData">
+
+          </tbody>
+        </table>
+      </div>
+    </section>
   </main>
-  <script type="text/javascript" src="../public/js/sidebar.js"></script>
+  <script src="../public/js/jquery.js"></script>
+  <script src="../public/js/quickCredit.js"></script>
+  <script type="text/javascript" src="../public/js/getAllLoans.js"></script>
+  <script src="../public/js/jquery.toast.js"></script>
 </body>
 
 </html>

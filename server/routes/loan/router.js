@@ -7,7 +7,7 @@ import validId from '../../middlewares/validators/validateId';
 
 const router = express.Router();
 const {
-  findOne, loanApplication, sortRepaidLoan, applicationStatus
+  findOne, loanApplication, sortRepaidLoan, applicationStatus, getUserLoan
 } = LoanController;
 const { validateLoanApplication, validateQueryParams, loanStatus } = LoanValidator;
 const { verifyToken } = Auth;
@@ -18,5 +18,6 @@ router.route('/loans/:id')
 router.route('/loans/')
   .post(verifyToken, validateLoanApplication, loanApplication)
   .get(verifyToken, isAdmin, validateQueryParams, sortRepaidLoan);
-
+router.route('/user/loans/')
+  .get(verifyToken, getUserLoan);
 export default router;
